@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ervas Marinhas (Seagrass)</title>
+
+    <!-- LIGAÇAO COM CSS-->
+    <link rel="stylesheet" type="text/css" href="Seagrass.css">
+    <link rel="stylesheet" type="text/css" href="Mapa_seagrass.css">
+    
+    <!-- Leaflet css MAPA-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Leaflet js MAPA-->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- biblioteca Plotly-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="Container_Nome_Site">
+            <img src="Imagens/Logo.png" width="30" height="30" class="Imagen_Logo">
+            <h2><a href="index.html">GeoPortal dos Ecossistemas de Coral de Cabo Verde</a></h2>
+        </div>
+        
+        <nav class="menu_horizontal">
+            <ul>
+                <li>
+                    <a href="geoportal.html"><strong>GeoPortal</strong></a>
+                </li>
+                <li>
+                    <a href="Ecossistemas_Marinhos.html"><strong>Ecossistemas Marinhos</strong></a>
+                    <ul class="submenu">
+                        <li><a href="EcossistemasdeCoral.html">Ecossistemas de Coral</a></li>
+                        <li><a href="Algas.html">Algas</a></li>
+                        <li><a href="Seagrass.html">Prados Marinhos - Seagrass</a></li>
+                        <li><a href="Deep_Sea.html">Mar Profundo</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="zonas_geo.html"><strong>Zonas Geomórficas</strong></a>
+                    <ul class="submenu">
+                        <li><a href="zonas_geo.html">Reef Slope</a></li>
+                        <li><a href="zonas_geo.html">Reef Slope</a></li>
+                        <li><a href="zonas_geo.html">Sheltered Reef Slope</a></li>
+                        <li><a href="zonas_geo.html">Outer Reef Flat</a></li>
+                        <li><a href="zonas_geo.html">Plateau</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="Areas_Importantes.html"><strong>Áreas Marinho-Costeiras Importantes</strong></a>
+                    <ul class="submenu">
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em São Antão</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em São Vicente</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em São Nicolau</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes na Sal</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes na Boavista</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em Maio</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em Santiago</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em Brava</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contentor_imagem_corals">
+        <img src="Imagens/seagrass2.jpg" alt="Habitats de Coral e Algas">
+        <span class="image-caption-titulo">Ervas Marinhas - Seagrass</span>
+    </div>
+
+
+    <div class="Titulo_Seagrass">
+        <p><strong>O que são os Ervas Marinhas? </strong></p>
+    </div>
+
+
+    <div class="Descricao_Habitat_Seagrass">
+        <p>Os <strong>Ervas Marinhas (seagrass)</strong> constituem um grupo singular de plantas com flor que <strong>evoluíram 
+            para viver completamente submersas no mar</strong> <a href="Referencias_Principal.html">(Akonde, 2023)</a>, através do 
+            desenvolvimento de uma morfologia específica, incluindo um sistema de fixação composto por rizomas, raíces e lacunas 
+            de ar que fornecem oxigénio <a href="Referencias_Principal.html">(Bandeira & Björk, 2001)</a>. Este 
+            grupo taxonómico é pequeno, consistindo por cerca de 60 espécies de angiospérmicas marinhas, que possuem uma 
+            distribuição global e são encontradas tanto em regiões temperadas como tropicais 
+            <a href="Referencias_Principal.html">(Orth et al., 2006)</a>.</p>
+    </div>
+
+    <div class="Descricao_Habitat_Seagrass">
+        <p>Entre as <strong>funções ecológicas mais relevantes</strong>, destaca-se a capacidade das Ervas Marinhas de sequestrarem 
+            aproximadamente 10% do carbono anual depositado nos sedimentos oceânicos <a href="Referencias_Principal.html">(Resilient seagrasses, 2022)</a>. 
+            Além disso, estes ecossistemas fornecem redes alimentares complexas que beneficiam espécies e habitats muito para 
+            além da sua distribuição <a href="Referencias_Principal.html">(Omollo et al., 2022)</a>. As Ervas Marinhas sustentam 
+            uma grande diversidade de herbívoros e predadores <a href="Referencias_Principal.html">(Unsworth & Butterworth, 2021)</a> 
+            e são reconhecidos pelo seu papel no incremento da biodiversidade dos nectons <a href="Referencias_Principal.html">(Hayes et al., 2020)</a>.</p>
+    </div>
+
+    <div class="Titulo_Distribuicao_Seagrass">
+        <p><strong>Distribuição Mundial dos Ervas Marinhas</strong></p>
+    </div>
+
+
+    <div class="Descricao_Habitat_Seagrass_Distribuicao">
+        <p>Os <strong>Ervas Marinhas</strong> encontram-se em todos os continentes, excepto na Antártida, formando habitats 
+            extensos que sustentam comunidades altamente diversificadas <a href="Referencias_Principal.html">(Duarte et al., 2008)</a>. 
+            Adaptaram-se à vida no oceano através do desenvolvimento de um sistema de fixação composto por rizomas e raízes, permitindo-lhes viver em diversas 
+            condições geomorfológicas, tanto em regiões temperadas como 
+            tropicais <a href="Referencias_Principal.html">(Orth et al., 2006)</a>. Estudos recentes apontam para a existência 
+            de mais de 1.000.000 km² de superfícies cobertas por Ervas Marinhas, apesar de ainda haver vastas áreas por 
+            mapear em todo o mundo <a href="Referencias_Principal.html">(Nordlund et al., 2018)</a>.
+        </p>
+    </div>
+
+    <div class="Descricao_Habitat_Seagrass_Distribuicao">
+        <p>O <strong>Mapa Mundial da Distribuição dos Ervas Marinhas</strong> <strong><a href="Mapa_Seagrass_Global.html">(click aquí)</a></strong>, 
+            elaborado pelo <strong>UNEP World Conservation Monitoring Centre</strong> em colaboração com diversas organizações, incluindo a <strong>Universidade de New 
+            Hampshire</strong>, organizações como a <strong>OSPAR Convention for the Northeast Atlantic Sea</strong>, e projetos 
+            como o <strong>projeto europeu Mediterranean Sensitive Habitats "Mediseh"</strong>, apresenta a distribuição 
+            dos Ervas Marinhas a nível global. Os dados do mapa foram criados pelo UNEP a partir de múltiplas fontes, abrangendo 
+            128 países, interpolações realizadas por especialistas e amostras baseadas em pontos. Além disso, os registos de 
+            ocorrência foram revistos com recurso a relatórios publicados, literatura científica revista por pares e consultas a 
+            especialistas. Importa referir que o mapa apresenta os dados da Versão 7.1, publicados em março de 2021. </a>
+        </p>
+    </div>
+
+    <div class="image-container1">
+        <a href="Mapa_Seagrass_Global.html">
+        <img src="Imagens/Seagrass_circle.png" style="width: 330px; height: auto;" class="MapaSeagrass">
+        <span class="image-caption-MapaSeagrass">Mapa da Distribuição Mundial das Ervas</span>
+        <span class="image-caption-MapaSeagrass1">Marinhas (click aquí)</span>
+        </a>
+    </div>
+
+    <div class="Descricao_Habitat_Seagrass">
+        <p>Relativamente, ao <strong>continente africano</strong>, estão registadas cerca de 12 espécies na costa oriental e 9 espécies na costa 
+            ocidental <a href="Referencias_Principal.html">(Creed et al., 2016)</a>. O estudo realizado por 
+            <a href="Referencias_Principal.html">Cheikh et al. (2022)</a> documentou e mapeou a distribuição e a 
+            cobertura dessas espécies nos países da costa noroeste africana. Foram identificadas quatro espécies principais: 
+            <strong class="nome_cientifico">Halodule wrightii, Cymodocea nodosa, Ruppia maritima e Zostera noltei</strong>. Estas 
+            encontram-se distribuídas pela Mauritânia, Senegal, Cabo Verde, Gâmbia, Guiné-Bissau, Guiné e Serra Leoa, sendo Halodule wrightii a espécie predominante na 
+            região, conforme ilustrado nas tabelas abaixo. <strong><a href="Seagrass_Africa.html">Click aquí</a></strong> para visualizar 
+            os mapas com a localização das espécies de Padros Marinhos identificadas no estudo de <a href="Referencias_Principal.html">Cheikh et al. (2022)</a>.
+        </p>
+    </div>
+
+    <div class="Tabela_Seagrass_Africa">
+        <table>
+            <tr>
+                <th class="titulos">País</th>
+                <th class="nome_cientifico">Cymodocea nodosa</th>
+                <th class="nome_cientifico">Halodule wrightii</th>
+                <th class="nome_cientifico">Zostera noltei</th>
+                <th class="nome_cientifico">Ruppia maritima</th>
+            </tr>
+        
+            <!-- Grupo: Mauritania -->
+            <tr>
+                <td class="col_pais">Mauritânia</td>
+                <td class="col_x">X</td>
+                <td class="col_x">X</td>
+                <td class="col_x">X</td>
+                <td class="col_x">X</td>
+            </tr>
+        
+            <!-- Grupo: Senegal -->
+            <tr>
+                <td class="col_pais">Senegal</td>
+                <td class="col_x">X</td>
+                <td class="col_x">X</td>
+                <td class="col_x">X</td>
+                <td class="col_x">X</td>
+            </tr>
+        
+            <!-- Grupo: Cabo Verde -->
+            <tr>
+                <td class="col_pais">Cabo Verde</td>
+                <td class="col_x"></td>
+                <td class="col_x">X</td>
+                <td class="col_x"></td>
+                <td class="col_x">X</td>
+            </tr>
+
+            <!-- Grupo: Gambia -->
+            <tr>
+                <td class="col_pais">Gâmbia</td>
+                <td class="col_x">X</td>
+                <td class="col_x">X</td>
+                <td class="col_x"></td>
+                <td class="col_x"></td>
+            </tr>
+
+
+            <!-- Grupo: Guiné-Bissau -->
+            <tr>
+                <td class="col_pais">Guiné-Bissau</td>
+                <td class="col_x"></td>
+                <td class="col_x">X</td>
+                <td class="col_x"></td>
+                <td class="col_x"></td>
+            </tr>
+
+
+            <!-- Grupo: Guiné -->
+            <tr>
+                <td class="col_pais">Guiné</td>
+                <td class="col_x"></td>
+                <td class="col_x">X</td>
+                <td class="col_x"></td>
+                <td class="col_x"></td>
+            </tr>
+
+
+            <!-- Grupo: Serra Leoa -->
+            <tr>
+                <td class="col_pais">Serra Leoa</td>
+                <td class="col_x"></td>
+                <td class="col_x">X</td>
+                <td class="col_x"></td>
+                <td class="col_x"></td>
+            </tr>
+        </table>
+        <div class="descricao-tabela-seagrass">
+            <p>Tabela 1: Ocorrência de espécies de Ervas Marinhas na África Ocidental. <a href="Referencias_Principal.html">Seagrasses of West Africa: New Discoveries, Distribution
+                Limits and Prospects for Management</a></p></div>
+    </div>
+
+
+    <div class="Titulo_Distribuicao_Seagrass">
+        <p><strong>Características e localização das Ervas Marinhas em Cabo Verde</strong></p>
+    </div>
+
+    <div class="Descricao_Habitat_Seagrass_Distribuicao">
+        <p>Os estudos e pesquisas, assim como os registros na literatura sobre Ervas Marinhas em Cabo Verde ainda não 
+            estão muito desenvolvidos. Dentro deste contexto o trabalho realizado por <a href="Referencias_Principal.html">Creed et al., 2016</a> 
+            constitue-se como um dos primeiros em documentar e georeferenciar as áreas de Ervas Marinhas no arquipelago, especialmente 
+            na ilha de Santiago. Destaca-se também a investigação, já comentada previamente, de 
+            <a href="Referencias_Principal.html">Cheikh et al. (2022)</a>, que estudou as áreas de Ervas Marinhas em 
+            Cabo Verde nos países já mencionados da África noroeste. Também está a tese do mestrado do 
+            <a href="Referencias_Principal.html">Akonde (2023)</a>, que é importante uma vez identificou e georefenciou 
+            as áreas de Ervas Marinhas na ilha de Santo Antão, e os trabalhos de conservação da 
+            organização <a href="https://www.ecocv.org/">ECOCV</a>, responsável pelo monitoramento de Ervas Marinhas em Santiago.</p>
+    </div>
+
+    <div class="image-halodule">
+        <img src="Imagens/Halodule_wrightii.png" style="width: 370px; height: auto;" class="Halodulewrightii">
+        <span class="image-caption-Halodule">Halodule wrightii</span>
+        </a>
+    </div>
+
+    <div class="Descricao_Habitat_Seagrass_Distribuicao">
+        <p>Na literatura, <strong>há registos de Ervas Marinhas no arquipélago de Cabo Verde em três ilhas: Santiago, Sal e 
+            Santo Antão</strong>. Na <strong>Ilha de Santiago</strong>, no estudo publicado por <a href="Referencias_Principal.html">Creed et al. (2016)</a>, 
+            identificou a espécie <strong class="nome_cientifico">Halodule wrightii</strong> numa localização entre a praia de Gamboa 
+            e o Ilhéu de Santa Maria, na cidade da Praia (14°54'32.47"N 23°30'37.86"W). Esta espécie foi também identificada noutros 
+            dois locais na zona sudeste da Ilha de Santiago: Moia-Moia ou Baía de Nossa Senhora da Luz (15°2'27.91"N; 23°27'2.44"W) e 
+            na baía a sul de Porto Lobo (15°0'3.25"N; 23°26'12.69"W). As algas verdes e castanhas (Phaeophyceae) foram encontradas 
+            com os Ervas Marinhas de Santiago <a href="Referencias_Principal.html">(Seydouba, 2021)</a>, e o
+             <strong class= "nome_cientifico">Turritella bicingulata Lamarck 1822</strong>, foi o animal mais destacado associado 
+             a estes ecossistemas <a href="Referencias_Principal.html">(Creed et al. 2016)</a>. De acordo com os registos da organização 
+             <a href="https://www.ecocv.org/">ECOCV</a>, também existem Ervas Marinhas na Ilha de Santiago, nomeadamente 
+             na praia de São Francisco (<strong class="nome_cientifico">Halodule wrightii</strong>) e na baía de Pedra Badejo, onde foi 
+             identificada a espécie <strong class="nome_cientifico">Ruppia maritima</strong>, assim como na baía de Angra em Tarrafal 
+            onde está a espécie <strong class="nome_cientifico">Cymodocea nodosa</strong>.</p>
+    </div>
+
+    <div class="image-cymodocea">
+        <img src="Imagens/cymodocea2.png" style="width: 370px; height: auto;" class="cymodocea">
+        <span class="image-caption-cymodocea">Cymodocea nodosa</span>
+        </a>
+    </div>
+
+    <div class="Descricao_Habitat_Seagrass_Distribuicao">
+        <p>Na <strong>Ilha de Santo Antão</strong>, <a href="Referencias_Principal.html">Akonde (2023)</a> identificou a presença 
+            de Ervas Marinhas na costa de Porto Novo, entre as coordenadas 17°01'35.391"N, 25°01'55.803"W e 17°01'31.223"N, 25°02'19.615"W. 
+            A espécie <strong class="nome_cientifico">Halodule wrightii</strong> foi encontrada em fundos marinhos de areia fina, a 
+            uma profundidade máxima de 13 metros e uma profundidade média de 7 metros ao longo da costa. A profundidade mínima 
+            (superfície do mar) foi de cerca de -2 metros, devido às fortes correntes e às ondas elevadas na área. Associados a 
+            estes Ervas Marinhas, Akonde destaca quatro espécies de peixes <strong class="nome_cientifico">Sphoeroides marmoratus, 
+            Stephanolepis hispidus, Gymnothorax vicinus, Pegusa cadenati</strong> e duas espécies de algas: uma alga vermelha 
+            identificada como <strong class="nome_cientifico">Asparagopsis taxiformis spp</strong> e uma alga verde identificada 
+            como <strong class="nome_cientifico">Avrainvillea sp</strong>.</p>
+    </div>
+
+    <div class="image-ruppia">
+        <img src="Imagens/Ruppia.jpg" style="width: 370px; height: auto;" class="ruppia">
+        <span class="image-caption-ruppia">Ruppia maritima</span>
+        </a>
+    </div>
+
+    <div class="Descricao_Habitat_Seagrass_Distribuicao">
+        <p>Relativamente a Ilha de Sal, o único registro de Ervas Marinhas encontrado foi por 
+            <a href="Referencias_Principal.html">Cheikh et al. (2022)</a> na área da baía da Pedra de Lume com a espécie
+            <strong class="nome_cientifico">Halodule wrightii</strong>. Além destes registos, com o 
+            <strong><a href="https://allencoralatlas.org/">Allen Coral Atlas</a></strong> 
+            também é possível identificar remotamente outras áreas com Ervas Marinhas, que, embora ainda não tenham sido revisadas 
+            no terreno, são importantes para compreender a localização destas espécies no arquipélago de Cabo Verde.</p>
+    </div>
+
+
+    <div class="Descricao_Habitat_Seagrass">
+        <p>O mapa embaixo apresenta os <strong>8 locais identificados e georreferenciados na literatura disponível sobre
+            Ervas Marinhas em Cabo Verde</strong>, e as <strong>coberturas identificadas pelo Allen Coral Atlas</strong>. 
+            É de salientar que, até ao momento, existem registos com recolha de dados científicos no terreno apenas nas 
+            ilhas de Santiago, Sal e Santo Antão. Contudo, as coberturas do Allen Coral Atlas são igualmente relevantes para 
+            compreender que existem potenciais áreas com Ervas Marinhas em outras ilhas, como São Vicente, Santa Luzia, 
+            São Nicolau, Boavista, Maio, Fogo e no Ilhéu Grande. Por último, é relevante mencionar que o facto de nenhum dos 
+            8 locais georreferenciados na literatura estar localizado dentro de uma área protegida com território marinho-costeiro,
+             destaca a importância de estudar e proteger ainda mais as Ervas Marinhas de Cabo Verde.</p>
+    </div>
+
+
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------- MAPA COBERTURAS DE SEAGRASS -------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------> 
+
+<div class="mapa_titulo_container">
+
+    <!-- Título del Mapa -->
+    <div class="titulomapa">
+        <strong>Coberturas de Ervas Marinhas (Seagrass) em Cabo Verde</strong>
+    </div>
+
+    <!-- Contenedor de Leyendas -->
+    <div class="legenda_container">
+        <!-- Imagen y texto de Comunidades Seagrass -->
+        <div class="legenda_item">
+            <img src="Imagens/importancia_pin.png" style="width: 25px; height: 25px;" alt="Símbolo Comunidades Seagrass">
+            <span>Locais com Ervas Marinhas</span>
+        </div>
+
+        <!-- Imagen y texto de Coberturas de Praods Marinhos (Seagrass) -->
+        <div class="legenda_item">
+            <img src="Imagens/color_seagrass.png" style="width: 25px; height: 25px;" alt="Color Coral">
+            <span>Coberturas de Ervas Marinhas (Seagrass)</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="map_coberturas_seagrass"></div>
+
+<!-- CONEXIONES SRC -->
+<script src="./Data/ComunidadesCorais_PlanoNacional2015.js"></script>
+<script src="./Data/SeaGrass_CaboVerde.js"></script>
+<script src="./Data/Ilhas_CaboVerde.js"></script>
+<script src="./Data/Ilheus_CaboVerde.js"></script>
+<script src="./Data/IslasCaboVerde.js"></script>
+<script src="./Data/Comunidades_Seagrass.js"></script>
+<script src="./Data/Parques_Marinhos_Costeiros.js"></script>
+
+
+<script>
+    // Inicializar el mapa
+    var map = L.map('map_coberturas_seagrass').setView([15.793513607220337, -23.804797871613353], 7.5);
+
+    // Capa base del mapa
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    }).addTo(map);
+
+
+////////////////////////////////////////////////////////////// SEAGRASS ////////////////////////////////////////////////////////////////
+
+var Seagrass_CaboVerde = L.geoJSON(Seagrass_CaboVerde, {
+style: function(feature) {
+return {
+        fillColor: '#0bda51',
+        color: '#0bda51',     // COLOR DEL BORDE
+        weight: 5,          // GROSOR DEL BORDE
+        opacity: 1,        // (MANTENER ENTRE 0 Y 1)
+        fillOpacity: 1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.Nome && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.Nome + 
+            '<br><strong>Habitat Bentônico:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+    }}}).addTo(map);
+
+
+
+////////////////////////////////////////////////////////////// COMUNIDADES SEAGRASS /////////////////////////////////////////////////////////////
+
+// Ícono para Seagrass
+var Seagrass_ICON = L.icon({
+    iconUrl: '/Imagens/importancia_pin.png',
+    iconSize: [22, 22], // Tamaño del ícono
+    });
+
+// Crear capa GeoJSON con íconos
+var Lugares_Seagrass = L.geoJSON(Lugares_Seagrass, {
+    pointToLayer: function (feature, latlng) {
+    // Verifica si el objeto feature tiene coordenadas para el marcador
+    if (feature.geometry && feature.geometry.type === 'MultiPoint') {
+    return L.marker(latlng, { icon: Seagrass_ICON });
+    }
+    return null; // Si no es un punto, no se agrega al mapa
+    },
+    onEachFeature: function(feature, layer) {
+    if (feature.properties && feature.properties.Nome_Area && feature.properties.Ilha && feature.properties.Especie && feature.properties.Fonte) {
+    var popupContent = 
+    '<strong>Local:</strong> ' + feature.properties.Nome_Area + '<br>' +
+    '<strong>Ilha:</strong> ' + feature.properties.Ilha + '<br>' +
+    '<strong>Espécie:</strong> ' + feature.properties.Especie + '<br>' +
+    '<strong>Fonte:</strong> ' + feature.properties.Fonte;
+    layer.bindPopup(popupContent);
+    }}});
+
+
+////////////////////////////////////////////////////////////// PARQUES MARINHOS ///////////////////////////////////////////////////////
+
+var Parques_Marinhos_Costeiros = L.geoJSON(Parques_Marinhos_Costeiros, {
+style: function(feature) {
+return {
+        color: '#7bf4a7',     // COLOR DEL BORDE
+        weight: 2,          // GROSOR DEL BORDE
+        fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.ilha && feature.properties.categorias && feature.properties.designacao && feature.properties.area_ha) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.ilha + '<br><strong>Categoria:</strong> ' 
+            + feature.properties.categorias + '<br><strong>Nome:</strong> ' + feature.properties.designacao + 
+            '<br><strong>Documento:</strong> <a href="' + feature.properties.link_bo + '" target="_blank">Ver Decreto</a>';
+            layer.bindPopup(popupContent);
+    }}});
+
+////////////////////////////////////////////////////////////// PONTO CABO VERDE ////////////////////////////////////////////////////
+
+// Crear un ícono de texto sin un punto visible
+var caboVerdeLabel = L.divIcon({
+    className: 'cabo-verde-label',  // Deficion del estilo esta en Seagrass.css
+    html: '<strong>Cabo Verde</strong>',
+    iconSize: [0, 0],               // Sin tamaño para ocultar un punto
+});
+
+// Agregar la etiqueta al mapa
+L.marker([16.002106683691018, -24.36910171141955], { icon: caboVerdeLabel }).addTo(map);
+
+// Insertar los estilos CSS en el documento
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = css;
+document.getElementsByTagName('head')[0].appendChild(style);
+
+
+///////////////////////////////////////////////// NOMES ILHAS DE CABO VERDE ////////////////////////////////////////////////////////////
+
+var CaboVerdeIslas = L.geoJSON(CaboVerdeIslas, {
+    pointToLayer: function (feature, latlng) {
+        // Crear un ícono de texto usando L.divIcon
+        var labelIcon = L.divIcon({
+            className: 'CaboVerdeIslas-label', // Clase CSS para estilos personalizados
+            html: feature.properties.nome, // Texto que se mostrará
+            iconSize: null // Sin tamaño, para evitar un contenedor visible
+        });
+        // Retornar el marcador con el ícono de texto
+        return L.marker(latlng, { icon: labelIcon });
+    }
+}).addTo(map);
+
+// Añadir estilos CSS para personalizar la etiqueta
+var css = `
+    .CaboVerdeIslas-label {
+        font-size: 13px;         /* Tamaño del texto */
+        color: #fcfcae;          /* Color del texto */
+        text-align: center;      /* Centrar el texto */
+        white-space: nowrap;     /* Evitar que el texto se divida */
+        text-shadow: 0px 0px 1px white; /* Sombra para visibilidad */
+    }
+`;
+
+// Insertar el CSS en el documento
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = css;
+document.getElementsByTagName('head')[0].appendChild(style);
+
+
+//////////////////////////////////////////////////////// CAMADA ILHEUS //////////////////////////////////////////////////////////////// 
+
+var ilheusLayer = null;
+
+// Función para agregar las etiquetas de las islas
+function addIlheusLabels() {
+// Verificar si la capa ya está agregada, si no, agregarla
+    if (!ilheusLayer) {
+    ilheusLayer = L.geoJSON(Ilheus_CaboVerde, {
+    pointToLayer: function(feature, latlng) {
+    if (feature.properties && feature.properties.Name) {
+    // Usar divIcon para mostrar texto sin ícono
+    var label = L.divIcon({
+    className: 'custom-label-ilheus-caboverde', // Clase para estilo personalizado
+    html: feature.properties.Name, // Nombre de la isla
+    iconSize: [0, 0] // Sin ícono visible
+    });
+    return L.marker(latlng, { icon: label });
+    }}}).addTo(map);
+}}
+
+// Función para eliminar las etiquetas de las islas
+function removeIlheusLabels() {
+// Si la capa de etiquetas existe, eliminarla
+if (ilheusLayer) {
+    map.removeLayer(ilheusLayer);
+    ilheusLayer = null;
+}}
+
+// Controlar el nivel de zoom
+map.on('zoomend', function() {
+var currentZoom = map.getZoom();
+
+// Si el zoom es igual o mayor a 8.5, añadir las etiquetas
+if (currentZoom >= 9) {
+    addIlheusLabels();
+} else {
+    // Si el zoom es menor a 8.5, eliminar las etiquetas
+    removeIlheusLabels();
+}
+});
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////    LEGENDA MAPA     ///////////////////////////////////////////////////////////
+
+// PRIMER PASO: CREAR TITULOS A LOS LAYER CONTROL 
+var titleElementSeagrass = document.createElement('div');
+titleElementSeagrass.innerHTML = "";
+
+
+var overlayMapsSeagrass = {
+    "<img src='Imagens/importancia_pin.png' style='width: 18px; height: 18px;'> <span style='font-size: 14px;'>Locais Georreferenciados de Ervas Marinhas</span>": Lugares_Seagrass,
+    "<img src='Imagens/color_areasprotegidas.jpeg' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'>Áreas Protegidas Marinho Costeiras": Parques_Marinhos_Costeiros,
+};
+
+// Crear el control de capas 
+var layerControlSeagrass = L.control.layers(null, overlayMapsSeagrass, { collapsed: false, position: 'topright' })
+.addTo(map);
+
+// Seleccionar el contenedor del control de capas
+var layerControlContainerSeagrass = layerControlSeagrass.getContainer();
+
+// Insertar el título antes del contenido del control de capas
+layerControlContainerSeagrass.parentNode.insertBefore(titleElementSeagrass, layerControlContainerSeagrass);
+
+</script>
+
+<div class="Titulo_Distribuicao_Seagrass">
+    <p><strong>Coberturas e Extensão das Ervas Marinhas em Cabo Verde</strong></p>
+</div>
+
+<div class="Descricao_Habitat_Seagrass">
+    <p>A extensão das coberturas das Ervas Marinhas em Cabo Verde continua a ser um tema de investigação. O trabalho realizado por 
+        <a href="Referencias_Principal.html">Cheikh et al. (2022)</a> fornece uma estimativa de 0.62 hectares para todo o arquipélago. 
+        Já os dados do Allen Coral Atlas indicam uma estimativa de 1.323 hectares. O gráfico a seguir apresenta as coberturas de 
+        Ervas Marinhas segundo a informação do Allen Coral Atlas. A Ilha de Santiago destaca-se em comparação com as outras, enquanto 
+        Santo Antão e São Vicente partilham áreas quase semelhantes. Ao observar o pequeno tamanho das áreas, resulta claro que as 
+        Ervas Marinhas podem estar em perigo, uma vez que o crescimento rápido dos centros urbanos e a pressão antropogénica podem 
+        afetar e reduzir ainda mais as suas extensões.</p>
+</div>
+
+<!-- /////////// GRAFICO AREAS DE COBERTURA DE CORAL --> <!--///////////////////////////////// -->
+
+<div id="graficobarras_areasseagrass" style="width: 900px; height: 600px;"></div>
+
+<script>
+var data = [{
+    type: 'bar',
+    x: ['Santiago', 'Santo Antão', 'São Vicente', 'São Nicolau', 'Fogo','Santa Luzia', 'Sal', 'Boavista', 'Maio'],
+    y: [0.614, 0.4, 0.3, 0.003 ,0.002, 0.001, 0.001, 0.001, 0.001],
+    orientation: 'v', // Gráfico de barras vertical
+    marker: {
+        color: 'green',
+        width: 1
+    }
+}];
+
+var layout = {
+    title: 'Áreas (Ha) com coberturas de Ervas Marinhas (Seagrass) em Cabo Verde (Allen Coral Atlas)',
+    xaxis: {
+        title: 'Ilhas e Ilhéus',
+        showgrid: true,
+        zeroline: false,
+        tickfont: {
+            size: 12 // Ajuste del tamaño de la fuente para el eje X
+        }
+    },
+    yaxis: {
+        title: 'Área Ha',
+        showgrid: true,
+        zeroline: false
+    },
+    height: 500,
+    width: 900,
+    margin: {
+        l: 50, // Ajuste del margen izquierdo
+        r: 50,
+        t: 50,
+        b: 100 // Más espacio para las etiquetas del eje X
+    },
+    bargap: 0.5 // Aumentar el espacio entre las barras para hacerlas más delgadas
+};
+
+Plotly.newPlot('graficobarras_areasseagrass', data, layout);
+</script>
+
+<div class="bottom-bar">
+    <div class="backtotop">
+        <a href="Seagrass.html"><strong>Back to top</strong></a>
+    </div>
+</div>
+
+    </body>
+    </html>

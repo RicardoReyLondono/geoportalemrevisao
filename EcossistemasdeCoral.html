@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecossistemas de Coral</title>
+
+    <!-- LIGAÇAO COM CSS-->
+    <link rel="stylesheet" type="text/css" href="EcossistemasdeCoral.css">
+    <link rel="stylesheet" type="text/css" href="Tabela_Corais.css">
+    <link rel="stylesheet" type="text/css" href="Mapa_Comunidades_Corais.css">
+    
+    <!-- Leaflet css MAPA-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Leaflet js MAPA-->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- biblioteca Plotly-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+    <header class="top-bar">
+        <div class="Container_Nome_Site">
+            <img src="Imagens/Logo.png" width="30" height="30" class="Imagen_Logo">
+            <h2><a href="index.html">GeoPortal dos Ecossistemas de Coral de Cabo Verde</a></h2>
+        </div>
+        
+        <nav class="menu_horizontal">
+            <ul>
+                <li>
+                    <a href="geoportal.html"><strong>GeoPortal</strong></a>
+                </li>
+                <li>
+                    <a href="Ecossistemas_Marinhos.html"><strong>Ecossistemas Marinhos</strong></a>
+                    <ul class="submenu">
+                        <li><a href="EcossistemasdeCoral.html">Ecossistemas de Coral</a></li>
+                        <li><a href="Algas.html">Algas</a></li>
+                        <li><a href="Seagrass.html">Prados Marinhos - Seagrass</a></li>
+                        <li><a href="Deep_Sea.html">Mar Profundo</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="zonas_geo.html"><strong>Zonas Geomórficas</strong></a>
+                    <ul class="submenu">
+                        <li><a href="zonas_geo.html">Reef Slope</a></li>
+                        <li><a href="zonas_geo.html">Reef Slope</a></li>
+                        <li><a href="zonas_geo.html">Sheltered Reef Slope</a></li>
+                        <li><a href="zonas_geo.html">Outer Reef Flat</a></li>
+                        <li><a href="zonas_geo.html">Plateau</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="Areas_Importantes.html"><strong>Áreas Marinho-Costeiras Importantes</strong></a>
+                    <ul class="submenu">
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em São Antão</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em São Vicente</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em São Nicolau</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes na Sal</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes na Boavista</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em Maio</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em Santiago</a></li>
+                        <li><a href="Areas_Importantes.html">Áreas Marinho-Costeiras Importantes em Brava</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <div class="contentor_imagem_corals">
+        <img src="Imagens/HabitatsdeCoraleAlgas.jpg" alt="Habitats de Coral e Algas">
+        <span class="image-caption-titulo">Ecossistemas de Coral</span>
+    </div>
+
+    <div class="Titulo_Corais">
+        <p><strong>O que são os Corais?</strong></p>
+    </div>
+    
+    <div class="Descricao_Habitat_Coral">
+        <p>Os <strong>Corais</strong> são organismos marinhos de grande complexidade, pertencentes à <strong>classe Cnidária</strong> 
+            e à <strong>ordem Anthozoa</strong>, que também inclui as anêmonas <a href="Referencias_Principal.html">(Lopes, E. P., 
+            Freitas, R., & Silva, O., 2014)</a>. No entanto, diferentemente das anêmonas, os corais distinguem-se por desenvolverem um 
+            esqueleto, que pode ser composto de carbonato de cálcio ou matéria orgânica. Esses organismos podem viver de forma isolada 
+            ou em colônias; nas formas coloniais, diversos indivíduos, chamados pólipos, agrupam-se formando colônias de clones 
+            gerados a partir de um único embrião. </p>
+    </div>
+
+    <div class="Descricao_Habitat_Coral">
+        <p>Como membros da classe Cnidária, os corais apresentam um desenvolvimento limitado de órgãos. Cada pólipo é composto 
+            por três camadas básicas de tecido: (1) a epiderme externa, (2) uma camada interna de células que reveste a cavidade 
+            gastrovascular, responsável pela digestão, e (3) a mesogleia, uma camada intermediária entre as anteriores 
+            <a href="Referencias_Principal.html">(Barnes, R.D., 1987)</a>. Assim, o termo "coral" abrange uma ampla diversidade de 
+            formas, por exemplo, alguns corais possuem um esqueleto de carbonato de cálcio, sendo denominados corais pétreos ou 
+            escleractíneos. Outros, como as gorgônias, apresentam um esqueleto formado por matéria orgânica córnea, composto por uma 
+            substância conhecida como gorgonina <a href="Referencias_Principal.html">(Lopes, E. P., Freitas, R., & Silva, O., 2014)</a>.</p>
+    </div>
+
+    <div class="Descricao_Habitat_Coral">
+        <p>Em geral, os <strong>Ecossistemas de Coral</strong> encontram-se em áreas que apresentam uma cobertura significativa 
+            e estável de corais vivos, capazes de se manter ao longo do tempo. Nestas áreas, coexistem tanto organismos que 
+            constroem recifes <a href="Referencias_Principal.html">(Wood, 1998)</a> como aqueles que não o fazem 
+            <a href="Referencias_Principal.html">(Norström et al., 2009; Perry e Larcombe, 2003)</a>. Estes ecossistemas são 
+            compostos por dois complexos principais – um abiótico e outro biótico – que interagem dentro de um espaço geográfico 
+            específico <a href="Referencias_Principal.html">(Keith et al., 2013)</a>. No contexto dos corais, os componentes 
+            abióticos referem-se a elementos não vivos, como a temperatura da água e a luz solar. Já os componentes bióticos 
+            incluem os próprios corais e outros organismos vivos que constituem o ecossistema, como plantas, peixes, bactérias 
+            e outros seres que habitam o ambiente coralino. </p>
+    </div>
+
+    <div class="Titulo_Distribuicao_Corals">
+        <p><strong>Distribuição Mundial dos Corais</strong></p>
+    </div>
+
+    <div class="Descricao_Habitat_Coral_Distribuicao">
+        <p> De acordo com <a href="Referencias_Principal.html">Lopes, E. P., Freitas, R. e Silva, O. (2014)</a>, os corais estão 
+            distribuídos por todos os oceanos, mas a maioria das espécies está em águas tropicais e rasas, 
+            onde as altas temperaturas favorecem o crescimento dos corais pétreos. Estes corais formam recifes e estão limitados 
+            por fatores como temperatura, profundidade, salinidade e luz. Os recifes de corais desenvolvem-se melhor em águas com 
+            temperatura média anual entre 23-25°C. A profundidade é outro fator limitante, com recifes raramente ultrapassando os 
+            50-70 metros. Além disso, a salinidade ideal para a maioria dos corais está entre 25% e 32%. A maior diversidade de 
+            corais está nas margens ocidentais dos oceanos, especialmente no Indo-Pacífico e no Caribe. <strong>
+                <a href="Mapa_mundial_corais.html">Explora o Mapa da Distribuição Mundial de Corais aquí.</a></strong></p>
+    </div>
+
+    <div class="image-container1">
+        <a href="Mapa_mundial_corais.html">
+        <img src="Imagens/MapaCorals.png" style="width: 290px; height: auto;" class="MapaCorals">
+        <span class="image-caption-MapaCorals">Mapa da Distribuição Mundial dos Corais</span>
+        <span class="image-caption-MapaCorals2">(Click aquí)</span>
+        </a>
+    </div>
+
+
+    <div class="Titulo_Habitat_Coral_CaboVerde" id="Titulo_Habitat_Coral_CaboVerde">
+        <p><strong>Ecossistemas de Coral em Cabo Verde</strong></p>
+    </div>
+
+    <div class="Descricao_Habitat_Coral">
+        <p><strong>O crescimento e a evolução dos corais de Cabo Verde</strong> são influenciados pela localização e geomorfologia do arquipélago. 
+            Localizadas ao oeste do continente africano, estas ilhas e ilhéus de origem vulcânica e de plataforma insular pequena, 
+            recebem as correntes frias das ilhas Canárias que provocam um forte hidrodinamismo nas áreas costeiras o que resulta num 
+            número limitado de zonas abrigadas <a href="Referencias_Principal.html">(Almeida et al., 2014)</a>. As costas ao norte 
+            estão continuamente expostas a condições de hidrodinamismo intenso, influenciadas pelos ventos alísios. Já as costas 
+            ao sul e a oeste possuem poucas áreas protegidas, devido à presença constante de forte ondulação oceânica que chega 
+            de diversas direções.</p>
+    </div>
+
+    <div class="Descricao_Habitat_Coral">
+        <p>A combinação destes fatores resulta no crescimento insuficiente dos corais em Cabo Verde e limita a formação de verdadeiros 
+            recifes de corais nas águas marinhas que rodeiam o arquipélago <a href="Referencias_Principal.html">(Almeida et al., 2014)</a>. 
+            Entre as poucas baías protegidas, onde se encontram as <strong>comunidades coralinas</strong> mais relevantes, destacam-se a 
+            <strong>Baía das Gatas (Ilha de São Vicente), Pedra de Lume (Ilha do Sal) e a Baía de Sal Rei (Ilha da Boavista)</strong>
+            <a href="Referencias_Principal.html">(Laborel, 1974)</a>. No entanto, as ilhas de Cabo 
+            Verde foram classificadas por <a href="Referencias_Principal.html">Roberts et al. (2002)</a> como um dos dez hotspots de 
+            biodiversidade marinha, o que significa que se situam entre os centros de maior riqueza em endemismos a nível global. Apesar 
+            da reduzida contribuição em termos de área dos recifes de corais no mundo (15,8%), o país alberga entre 44,8% e 54,2% das espécies de distribuição 
+            restrita <a href="Referencias_Principal.html">(Lopes, E. P., Freitas, R., & Silva, O., 2014)</a>.</p>
+    </div>
+
+    <div class="Titulo_Habitat_Coral_CaboVerde" id="Titulo_Habitat_Coral_CaboVerde">
+        <p><strong>Características da fauna coralina de Cabo Verde</strong></p>
+    </div>
+
+    <div class="Descricao_Habitat_Coral">
+        <p><p>A fauna coralina de Cabo Verde é composta, em geral, por formas de pequena dimensão, provenientes do Oceano Índico, 
+            incluindo uma espécie guineana (<strong><span class="nomecientifico_corais">Schizoculina africana</span></strong>) e duas espécies 
+            (<strong><span class="nomecientifico_corais">Porites porites</span></strong> e <strong><span class="nomecientifico_corais">Favia fragum</span></strong>) 
+            que não são muito comuns no Golfo da Guiné, bem como no Atlântico ocidental 
+            (<a href="Referencias_Principal.html">Lopes, E. P., Freitas, R. e Silva, O., 2014</a>). Assim, as espécies de corais 
+            mais representativas do arquipélago pertencem à ordem <strong><span class="nomecientifico_corais">Scleractinia</span></strong> 
+            <strong>(corais duros)</strong>. Entre elas, destacam-se as cinco espécies mais predominantes: 
+            <strong><span class="nomecientifico_corais">Porites astreoides</span></strong>, 
+            <strong><span class="nomecientifico_corais">Porites porites</span></strong>, 
+            <strong><span class="nomecientifico_corais">Favia fragum</span></strong>, 
+            <strong><span class="nomecientifico_corais">Millepora alcicornis</span></strong> e
+            <strong><span class="nomecientifico_corais">Siderastrea radians</span></strong>
+             (<a href="Referencias_Principal.html">DGA, 2004; Almeida et al., 2014</a>).</p></p>
+    </div>
+
+    <div class="Imagens_especies_corais">
+        <img src="Imagens/Porites_astreoides.jpg" style="width: 250px; height: auto;" class="Cinco_especies_corais">
+        <span class="image-caption-porites-astreoides">Porites astreoides</span>
+
+        <img src="Imagens/Porites_porites.jpg" style="width: 250px; height: auto;" class="Cinco_especies_corais">
+        <span class="image-caption-porites-porites">Porites porites</span>
+
+        <img src="Imagens/Favia_fragum.jpg" style="width: 250px; height: 190px;" class="Cinco_especies_corais">
+        <span class="image-caption-favia-fragum">Favia fragum</span>
+
+        <img src="Imagens/Millepora_alcicornis.jpg" style="width: 250px; height: auto;" class="Cinco_especies_corais">
+        <span class="image-caption-millepora-alcicornis">Millepora alcicornis</span>
+
+        <img src="Imagens/Siderastrea radians.jpg" style="width: 250px; height: auto;" class="Cinco_especies_corais">
+        <span class="image-caption-siderastrea-radians">Siderastrea radians</span>
+    </div>
+ 
+
+    <div class="Descricao_Habitat_Coral_Tabela">
+        <p>Na Tabela 3 apresenta a <strong>lista das espécies de corais mais comuns de Cabo Verde</strong> identificadas por 
+            <a href="Referencias_Principal.html">Lopes, E. P., Freitas, R. e Silva, O. (2014)</a>, com base nos estudos de 
+            <a href="Referencias_Principal.html">Monteiro et al. (2008)</a>, <a href="Referencias_Principal.html">Morri et al. (2000)</a>, 
+            <a href="Referencias_Principal.html">Boekschoten & Best (1988)</a>, e na revisão de 
+            <a href="Referencias_Principal.html">Almeida et al. (2014)</a>.</p>
+    </div>
+
+    <div class="Tabela_Corais">
+        <table>
+            <tr>
+                <th class="titulos">Classe</th>
+                <th class="titulos">Ordem</th>
+                <th class="titulos">Família</th>
+                <th class="titulos">Espécie (nome científico)</th>
+                <th class="titulos">Distribuição</th>
+            </tr>
+        
+            <!-- Grupo: Hydrozoa -->
+            <tr>
+                <td class="col_classe">Hydrozoa</td>
+                <td class="col_ordem">Anthoathecata</td>
+                <td class="col_familia">Milleporidae</td>
+                <td class="col_especie">Millepora alcicornis</td>
+                <td class="col_distribuicao">Substrato rochoso 0 a 15 m</td>
+            </tr>
+        
+            <!-- Grupo: Antipatharia -->
+            <tr>
+                <td class="col_classe" rowspan="28">Antipatharia</td>
+                <td class="col_ordem" rowspan="11">Antipatharia</td>
+                <td class="col_familia" rowspan="6">Anthipathidae</td>
+                <td class="col_especie">Stichopathes richardi</td>
+                <td class="col_distribuicao">Substrato rochoso 15 a 20 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Stichopathes puctata</td>
+                <td class="col_distribuicao">Substrato rochoso a 1311 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Stichopathes flagelum</td>
+                <td class="col_distribuicao">Substrato rochoso 1400 a 2165 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Antipathes virgata</td>
+                <td class="col_distribuicao">Substrato rochoso 528 a 1384 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Antipathes squamosa</td>
+                <td class="col_distribuicao">Substrato rochoso 50 a 1642 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Stichopathes lutkeni</td>
+                <td class="col_distribuicao">Substrato rochoso 15 a 20 m</td>
+            </tr>
+        
+            <!-- Grupo: Myriopathidae -->
+            <tr>
+                <td class="col_familia" rowspan="4">Myriopathidae</td>
+                <td class="col_especie">Tanacetipathes wirtzi</td>
+                <td class="col_distribuicao">Substrato rochoso 15 a 20 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Antipathella wollastoni</td>
+                <td class="col_distribuicao">Substrato rochoso 100 a 1025 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Tanacetipathes spinescens</td>
+                <td class="col_distribuicao">Substrato rochoso 15 a 20 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Parantipathes hirondelle</td>
+                <td class="col_distribuicao">Substrato rochoso 300 a 1530 m</td>
+            </tr>
+        
+            <!-- Quarto grupo: Schizopathidae -->
+            <tr>
+                <td class="col_familia">Schizopathidae</td>
+                <td class="col_especie">Parantipathes hirondelle</td>
+                <td class="col_distribuicao">Substrato rochoso 300 a 1530 m</td>
+            </tr>
+        
+            <!-- Quinto grupo: Alcyonacea -->
+            <tr>
+    
+                <td class="col_ordem" rowspan="8">Alcyonacea</td>
+                <td class="col_familia" rowspan="5">Gorgoniidae</td>
+                <td class="col_especie">Leptogorgia capverdensis</td>
+                <td class="col_distribuicao">Substrato rochoso 15 a 20 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Leptogorgia spp.</td>
+                <td class="col_distribuicao">Substrato rochoso 15 a 20 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Leptogorgia gaini</td>
+                <td class="col_distribuicao">Substrato rochoso 15 a 20 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Eunicella papilífera</td>
+                <td class="col_distribuicao">Substrato rochoso 15 a 20 m</td>
+            </tr>
+            <tr>
+                <td class="col_especie">Eunicella granulata</td>
+                <td class="col_distribuicao">Substrato rochoso 15 a 20 m</td>
+            </tr>
+    
+            <!-- Sexto grupo: Coralliidae -->
+            <tr>
+                <td class="col_familia">Coralliidae</td>
+                <td class="col_especie">Carallium rubrum</td>
+                <td class="col_distribuicao">Paredes verticais e covas 20 a 200 m</td>
+            </tr>
+    
+            <!-- Septimo grupo: Anthothelidae -->
+            <tr>
+                <td class="col_familia">Anthothelidae</td>
+                <td class="col_especie">Anthothela grandiflora</td>
+                <td class="col_distribuicao">Superior a 500 metros</td>
+            </tr>
+    
+            <!-- Octavo grupo: Clavulariidae -->
+            <tr>
+                <td class="col_familia">Clavulariidae</td>
+                <td class="col_especie">Carijoa riisei</td>
+                <td class="col_distribuicao">Substrato rochoso 0 a 15 m</td>
+            </tr>
+    
+            <!-- Grupo: Scleractinia -->
+            <tr>
+    
+                <td class="col_ordem" rowspan="9">Scleractinia</td>
+                <td class="col_familia">Mussidae</td>
+                <td class="col_especie">Favia fragum</td>
+                <td class="col_distribuicao">Substrato rochoso 0 a menos de 20 m</td>
+            </tr>
+    
+            <!-- Grupo: Poritidae -->
+            <tr>
+                <td class="col_familia" rowspan="2">Poritidae</td>
+                <td class="col_especie">Porites astreoides</td>
+                <td class="col_distribuicao">Substrato rochoso 0 a 20 m</td>
+            </tr>
+    
+            <tr>
+                <td class="col_especie">Porites porites</td>
+                <td class="col_distribuicao">Substrato rochoso 0 a 3 m</td>
+            </tr>
+    
+            <!-- Grupo: Siderastreidae -->
+            <tr>
+                <td class="col_familia">Siderastreidae</td>
+                <td class="col_especie">Siderastrea radians</td>
+                <td class="col_distribuicao">Substrato rochoso 0 a 15 m</td>
+            </tr>
+    
+            <!-- Grupo: Oculinidae -->
+            <tr>
+                <td class="col_familia">Oculinidae</td>
+                <td class="col_especie">Schizoculina africana</td>
+                <td class="col_distribuicao">Substrato rochoso 20 m</td>
+            </tr>
+    
+            <!-- Grupo: Dendrophylliidae -->
+            <tr>
+                <td class="col_familia" rowspan="3">Dendrophylliidae</td>
+                <td class="col_especie">Tubastrea spp.</td>
+                <td class="col_distribuicao">Paredes verticais 0 a 20 m</td>
+            </tr>
+    
+            <tr>
+                <td class="col_especie">Tubastrea aurea</td>
+                <td class="col_distribuicao">Paredes verticais 5 m</td>
+            </tr>
+    
+            <tr>
+                <td class="col_especie">Dendrophyllia spp.</td>
+                <td class="col_distribuicao">Paredes verticais 5 m</td>
+            </tr>
+    
+            <!-- Grupo: Caryophylliidae -->
+            <tr>
+                <td class="col_familia">Caryophylliidae</td>
+                <td class="col_especie">Caryophyllia seguenzae</td>
+                <td class="col_distribuicao">Substrato rochoso superior a 200 m</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="descricao-tabela-corals">
+        <p>Tabela 1: Espécies de corais mais comuns identificadas no Plano Nacional de Gestão e Conservação de Corais de 2014</p></div>
+
+    <div class="Titulo_Habitat_Coral_CaboVerde" id="Titulo_Habitat_Coral_CaboVerde">
+        <p><strong>Localização das Comunidades Coralinas e Áreas Cobertas por Corais e Algas em Cabo Verde</strong></p>
+    </div>
+
+    <div class="Descricao_Habitat_Coral_Mapa">
+        <p>O <strong>Plano Nacional de Gestão e Conservação de Corais</strong> identificou igualmente os 
+            <strong>principais locais onde se encontram as comunidades coralinas ao longo do litoral de Cabo Verde</strong>. 
+            Importa destacar que estas comunidades estão sempre associadas a substratos duros e áreas com hidrodinamismo reduzido 
+            <a href="Referencias_Principal.html">(Van der Land, 1993)</a>. A zona infralitoral rasa, que se estende desde o nível 
+            médio do mar até cerca de 20 metros de profundidade, é dominada por corais pétreos e 
+            algas. Já no infralitoral profundo, abaixo dos 20 metros, predominam os corais moles, como as antipatárias 
+            (corais negros) e as gorgónias <a href="Referencias_Principal.html">(Morri et al., 2000)</a>. Por último, no que diz 
+            respeito aos corais negros, trata-se de um grupo pouco estudado no arquipélago, composto por cerca de onze espécies distribuídas em três 
+            grandes famílias Anthipathidae, Myriopathidae e Schizopathidae <a href="Referencias_Principal.html">(Molodtsova, 2006)</a>. O 
+            mapa a seguir apresenta as <strong>Comunidades Coralinas georreferenciadas no âmbito do Plano Nacional</strong>, bem 
+            como as áreas com <strong>cobertura de corais em Cabo Verde identificadas com Allen Coral Atlas</strong>. </p>
+    </div>
+
+
+<!---------------------------------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------- MAPA COBERTURAS DE CORAL  -------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------> 
+
+    
+    <div class="mapa_titulo_container">
+        <!-- Título del Mapa -->
+        <div class="titulomapa">
+            <strong>Comunidades Coralinas e áreas com coberturas de Coral em Cabo Verde</strong>
+        </div>
+    
+        <!-- Contenedor de Leyendas -->
+        <div class="legenda_container">
+            <!-- Imagen y texto de Comunidades Coralinas -->
+            <div class="legenda_item">
+                <img src="Imagens/symbol.png" style="width: 25px; height: 25px;" alt="Símbolo Comunidades Coralinas">
+                <span>Comunidades Coralinas</span>
+            </div>
+    
+            <!-- Imagen y texto de Coberturas de Coral e Algas -->
+            <div class="legenda_item">
+                <img src="Imagens/color_coral.png" style="width: 25px; height: 25px;" alt="Color Coral">
+                <span>Coberturas de Coral e Algas</span>
+            </div>
+        </div>
+    </div>
+  
+
+    <div id="map_comunidades_corais"></div>
+
+    <!-- GeoJSON data scripts -->
+    <script src="./Data/ComunidadesCorais_PlanoNacional2015.js"></script>
+    <script src="./Data/Coral_Algae_CaboVerde.js"></script>
+    <script src="./Data/Ilheus_CaboVerde.js"></script>
+    <script src="./Data/IslasCaboVerde.js"></script>
+    <script src="./Data/Parques_Marinhos_Costeiros.js"></script>
+    
+
+    <!-- Custom script -->
+    <script>
+        // Inicializar el mapa
+        var map = L.map('map_comunidades_corais').setView([15.793513607220337, -23.804797871613353], 7.5);
+
+        // Capa base del mapa
+        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        }).addTo(map);
+
+
+////////////////////////////////////////////////////////////// CORAL ALGAE /////////////////////////////////////////////////////////////
+
+var Coral_Algae_CaboVerde = L.geoJSON(Coral_Algae_CaboVerde, {
+    style: function(feature) {
+    return {
+        fillColor: 'orange',
+        color: 'orange',     // Border color
+        weight: 2.8,          // Border thickness
+        opacity: 1,        // Border opacity (should be between 0 and 1)
+        fillOpacity: 1,    // Fill opacity
+        };
+        },
+        onEachFeature: function (feature, layer) {
+            if (feature.properties && feature.properties.Nome && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.Nome + 
+            '<br><strong>Habitat Bentônico:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+        }}}).addTo(map);
+
+////////////////////////////////////////////////////////////// COMUNIDADES CORAL /////////////////////////////////////////////////////////////
+
+// Ícono para Comunidades Coralinas
+var ComunidadesCorais_ICON = L.icon({
+    iconUrl: '/Imagens/symbol.png',
+    iconSize: [22, 22], // Tamaño del ícono
+    });
+
+// Crear capa GeoJSON con íconos
+var ComunidadesCorais_Plano2015 = L.geoJSON(ComunidadesCorais_Plano2015, {
+    pointToLayer: function (feature, latlng) {
+    // Verifica si el objeto feature tiene coordenadas para el marcador
+    if (feature.geometry && feature.geometry.type === 'Point') {
+    return L.marker(latlng, { icon: ComunidadesCorais_ICON });
+    }
+    return null; // Si no es un punto, no se agrega al mapa
+    },
+    onEachFeature: function(feature, layer) {
+    if (feature.properties && feature.properties.IlhaIlhéu && feature.properties.Local && feature.properties.Fonte) {
+    var popupContent = 
+    '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.IlhaIlhéu + '<br>' +
+    '<strong>Comunidade Coralina:</strong> ' + feature.properties.Local + '<br>' +
+    '<strong>Fonte:</strong> ' + feature.properties.Fonte;
+    layer.bindPopup(popupContent);
+    }}});
+
+
+////////////////////////////////////////////////////////////// PARQUES MARINHOS ///////////////////////////////////////////////////////
+
+var Parques_Marinhos_Costeiros = L.geoJSON(Parques_Marinhos_Costeiros, {
+style: function(feature) {
+return {
+        color: '#7bf4a7',     // COLOR DEL BORDE
+        weight: 2,          // GROSOR DEL BORDE
+        fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.ilha && feature.properties.categorias && feature.properties.designacao && feature.properties.area_ha) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.ilha + '<br><strong>Categoria:</strong> ' 
+            + feature.properties.categorias + '<br><strong>Nome:</strong> ' + feature.properties.designacao + 
+            '<br><strong>Documento:</strong> <a href="' + feature.properties.link_bo + '" target="_blank">Ver Decreto</a>';
+            layer.bindPopup(popupContent);
+    }}});
+    
+
+
+////////////////////////////////////////////////////////////// PONTO CABO VERDE ////////////////////////////////////////////////////
+
+// Crear un ícono de texto sin un punto visible
+var caboVerdeLabel = L.divIcon({
+    className: 'cabo-verde-label',  // Deficion del estilo esta en Seagrass.css
+    html: '<strong>Cabo Verde</strong>',
+    iconSize: [0, 0],               // Sin tamaño para ocultar un punto
+});
+
+// Agregar la etiqueta al mapa
+L.marker([16.002106683691018, -24.36910171141955], { icon: caboVerdeLabel }).addTo(map);
+
+// Insertar los estilos CSS en el documento
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = css;
+document.getElementsByTagName('head')[0].appendChild(style);
+
+
+///////////////////////////////////////////////// NOMES ILHAS DE CABO VERDE ////////////////////////////////////////////////////////////
+
+var CaboVerdeIslas = L.geoJSON(CaboVerdeIslas, {
+    pointToLayer: function (feature, latlng) {
+        // Crear un ícono de texto usando L.divIcon
+        var labelIcon = L.divIcon({
+            className: 'CaboVerdeIslas-label', // Clase CSS para estilos personalizados
+            html: feature.properties.nome, // Texto que se mostrará
+            iconSize: null // Sin tamaño, para evitar un contenedor visible
+        });
+        // Retornar el marcador con el ícono de texto
+        return L.marker(latlng, { icon: labelIcon });
+    }
+}).addTo(map);
+
+// Añadir estilos CSS para personalizar la etiqueta
+var css = `
+    .CaboVerdeIslas-label {
+        font-size: 13px;         /* Tamaño del texto */
+        color: #fcfcae;          /* Color del texto */
+        text-align: center;      /* Centrar el texto */
+        white-space: nowrap;     /* Evitar que el texto se divida */
+        text-shadow: 0px 0px 1px white; /* Sombra para visibilidad */
+    }
+`;
+
+// Insertar el CSS en el documento
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = css;
+document.getElementsByTagName('head')[0].appendChild(style);
+
+
+//////////////////////////////////////////////////////// CAMADA ILHEUS //////////////////////////////////////////////////////////////// 
+
+var ilheusLayer = null;
+
+// Función para agregar las etiquetas de las islas
+function addIlheusLabels() {
+// Verificar si la capa ya está agregada, si no, agregarla
+    if (!ilheusLayer) {
+    ilheusLayer = L.geoJSON(Ilheus_CaboVerde, {
+    pointToLayer: function(feature, latlng) {
+    if (feature.properties && feature.properties.Name) {
+    // Usar divIcon para mostrar texto sin ícono
+    var label = L.divIcon({
+    className: 'custom-label-ilheus-caboverde', // Clase para estilo personalizado
+    html: feature.properties.Name, // Nombre de la isla
+    iconSize: [0, 0] // Sin ícono visible
+    });
+    return L.marker(latlng, { icon: label });
+    }}}).addTo(map);
+}}
+
+// Función para eliminar las etiquetas de las islas
+function removeIlheusLabels() {
+// Si la capa de etiquetas existe, eliminarla
+if (ilheusLayer) {
+    map.removeLayer(ilheusLayer);
+    ilheusLayer = null;
+}}
+
+// Controlar el nivel de zoom
+map.on('zoomend', function() {
+var currentZoom = map.getZoom();
+
+// Si el zoom es igual o mayor a 8.5, añadir las etiquetas
+if (currentZoom >= 9) {
+    addIlheusLabels();
+} else {
+    // Si el zoom es menor a 8.5, eliminar las etiquetas
+    removeIlheusLabels();
+}
+});
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////    LEGENDA MAPA     ///////////////////////////////////////////////////////////
+
+// PRIMER PASO: CREAR TITULOS A LOS LAYER CONTROL 
+var titleElementCoral = document.createElement('div');
+titleElementCoral.innerHTML = "";
+
+
+var overlayMapsCoral = {
+    "<img src='Imagens/symbol.png' style='width: 18px; height: 18px;'> <span style='font-size: 14px;'> Comunidades de Corais PNGC 2014</span>": ComunidadesCorais_Plano2015,
+    "<img src='Imagens/color_areasprotegidas.jpeg' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Áreas Protegidas Marinho Costeiras": Parques_Marinhos_Costeiros,
+};
+
+// Crear el control de capas 
+var layerControlCoral = L.control.layers(null, overlayMapsCoral, { collapsed: false, position: 'topright' })
+.addTo(map);
+
+// Seleccionar el contenedor del control de capas
+var layerControlContainerCoral = layerControlCoral.getContainer();
+
+// Insertar el título antes del contenido del control de capas
+layerControlContainerCoral.parentNode.insertBefore(titleElementCoral, layerControlContainerCoral);
+
+    </script>
+
+<div class="Coral_Analise_Tabela1">
+    <p>Com base nas informações do Allen Coral Atlas e do mapa, a tabela a seguir apresenta as áreas em km² com coberturas de coral 
+        nas ilhas de Cabo Verde. Destaca-se a ilha de Boavista, que, apesar de não ser a maior em área territorial, possui a cobertura 
+        mais extensa de coral de todas as ilhas, quase triplicando a área de cobertura de coral da ilha de Santiago, que ocupa o 
+        segundo lugar. Este facto sublinha a necessidade de implementar medidas eficazes para garantir a conservação desses habitats 
+        na Boavista, dada a sua relevância ecológica. </p>
+    <p><strong>Por favor, acrescentar uma análise mais detalhada do gráfico </strong></p>
+</div>
+
+ <!-- /////////// GRAFICO AREAS DE COBERTURA DE CORAL -->
+    <!--///////////////////////////////// -->
+
+    <div id="graficobarras_areascoral" style="width: 900px; height: 600px;"></div>
+
+<script>
+    var data = [{
+        type: 'bar',
+        x: ['Boavista', 'Santiago', 'Maio', 'Sal', 'São Nicolau', 'São Vicente', 'Santo Antão', 'Fogo', 'Santa Luzia', 'Brava', 'Ilhéu Grande', 'Ilhéu Branco'],
+        y: [2904.3, 1132.1, 966.5, 882.8, 501.3, 458.3, 370.7, 245, 237, 53.6, 37.9, 37],
+        orientation: 'v', // Gráfico de barras vertical
+        marker: {
+            color: 'orange',
+            width: 1
+        }
+    }];
+
+    var layout = {
+        title: 'Áreas (Ha) com coberturas de Coral e Algas em Cabo Verde (Allen Coral Atlas)',
+        xaxis: {
+            title: 'Ilhas e Ilhéus',
+            showgrid: true,
+            zeroline: false,
+            tickfont: {
+                size: 12 // Ajuste del tamaño de la fuente para el eje X
+            }
+        },
+        yaxis: {
+            title: 'Área Ha',
+            showgrid: true,
+            zeroline: false
+        },
+        height: 500,
+        width: 900,
+        margin: {
+            l: 50, // Ajuste del margen izquierdo
+            r: 50,
+            t: 50,
+            b: 100 // Más espacio para las etiquetas del eje X
+        },
+        bargap: 0.5 // Aumentar el espacio entre las barras para hacerlas más delgadas
+    };
+
+    Plotly.newPlot('graficobarras_areascoral', data, layout);
+</script>
+
+<div class="Coral_Analise_Tabela2">
+    <p>As ilhas de Santiago, Maio e Sal apresentam coberturas de corais com áreas similares, revelando padrões de distribuição 
+        comparáveis. De forma semelhante, as ilhas de São Nicolau e São Vicente também partilham características equivalentes 
+        nas suas áreas de cobertura de corais, indicando possíveis condições ambientais semelhantes nestes locais.</p>
+</div>
+
+<div class="Coral_Analise_Tabela3">
+    <p>Por fim, as ilhas e ilhéus situados na região sul do arquipélago, como a ilha Brava e os ilhéus Grande e Branco, possuem 
+        áreas de corais significativamente mais reduzidas. Este cenário aponta para uma distribuição desigual dos habitats de coral 
+        em Cabo Verde, reforçando a importância de estratégias de conservação diferenciadas e adaptadas às particularidades de cada 
+        ilha ou conjunto de ilhas. </p>
+</div>
+
+<div class="bottom-bar">
+    <div class="backtotop">
+        <a href="EcossistemasdeCoral.html"><strong>Back to top</strong></a>
+    </div>
+</div>
+
+</body>
+</html>
+        

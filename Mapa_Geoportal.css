@@ -1,0 +1,53 @@
+
+#mapa_geportal {
+  position: absolute; /* Asegura que el mapa aparezca detrás de los contenidos*/
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupa todo el ancho */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  z-index: 0; /* Envía el mapa al fondo */
+}
+
+.titulomapa{
+margin: 0; 
+padding: 5px; 
+font-size: 12px; 
+line-height: 0.2; 
+text-align: center;
+background-color: rgb(251, 245, 236);
+}
+
+.Imagen_Grafico:hover {
+    transform: scale(1.50); 
+    transition: transform 0.3s ease; 
+    cursor: pointer; 
+  }
+
+.Nome_Ilha {
+   font-weight: bold;
+   text-align: center;
+   font-size: 15px;
+  }
+
+.Comunidades{
+text-align: left;
+font-size: 13px;
+}
+
+.Nome_Area_Ecologica{
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+ }
+
+.Descricao_Tartaruga{
+  text-align: left;
+  font-size: 13px;
+  clear: both;
+ }
+
+ .nomecientifico{
+  font-style: italic;
+ }
+
+

@@ -1,0 +1,51 @@
+table {
+    border: 1px solid #DDDDDD;
+    width: auto; /* Ajusta ao conteúdo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    margin: auto; /* Centraliza horizontalmente */
+    margin-top: 30px; /* Reduz o espaçamento superior */
+}
+
+.Tabela_Corais table {
+    border-collapse: collapse; /* Borda colapsada */
+    width: 45%; /* Reduz a largura */
+    height: auto; /* Altura ajustada ao conteúdo */
+}
+
+.Tabela_Corais th, .Tabela_Corais td {
+    border: 1px solid black; /* Borda em torno de cada célula */
+    padding: 4px; /* Reduz o espaçamento interno */
+    text-align: left; /* Texto alinhado à esquerda */
+    font-size: 14px; /* Fonte menor */
+    line-height: 1.2; /* Reduz o espaço vertical entre linhas */
+}
+
+.Tabela_Corais th {
+    background-color: #f2f2f2; /* Cor de fundo para cabeçalhos */
+    font-size: 15px; /* Tamanho ligeiramente maior que as células */
+    font-weight: bold; /* Negrito para destaque */
+}
+
+.titulos {
+    font-size: 15px; /* Menor que 17px */
+    text-align: justify;
+    background-color: rgb(214, 216, 218);
+}
+
+.col_classe, .col_ordem, .col_familia, .col_especie, .col_distribuicao {
+    font-size: 14px; /* Reduz tamanho para uniformidade */
+    text-align: justify;
+    border-bottom: 1px solid #717171;
+}
+
+.col_especie {
+    font-style: italic; /* Mantém estilo para nomes científicos */
+}
+
+.descricao-tabela-corals{
+    justify-items: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+

@@ -1,0 +1,68 @@
+.Nombre{
+    float: left; 
+    color: #1d1c1c;
+    font-size: 15px;
+    margin-left: 40px;
+    margin-top: 5px;
+  }
+  
+  nav.menu_horizontal ul {
+    list-style-type: none;
+    float: right; 
+    margin-right: 100px;
+    margin-top: 30px;
+
+  }
+  
+  nav.menu_horizontal li {
+    display: inline;
+  }
+  
+  nav.menu_horizontal li a {
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 4px;
+    color: #1d1c1c;
+    font-size: 19px;
+    font-style: bolder;
+    margin-right: 30px;
+  }
+  
+  nav.menu_horizontal li a:hover {
+    color: rgb(147, 117, 62);
+    text-shadow: black;
+  }
+
+  .container_1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .Contatos {
+    text-align: center;
+    font-size: 23px;
+    color: #2d2b2b;
+    clear: both;  
+    margin-top: 120px; 
+  }
+
+
+  .Descricao_container_1 {
+    text-align: center;
+    font-size: 16px;
+    color: #2d2b2b;
+    margin-top: 20px;
+  }
+
+  .Imagen_linkedin {
+    margin-top: 10px;
+  }
+  
+  .Imagen_gmail {
+    margin-top: 10px;
+  }
+  
+  .Imagen_outlook {
+    margin-top: 10px;
+  }

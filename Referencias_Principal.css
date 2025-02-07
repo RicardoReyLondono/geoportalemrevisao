@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #b3d1f7;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Estilo do contêiner do logo e título */
+  .Container_Nome_Site {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o logo e o título */
+  }
+  
+  .Container_Nome_Site h2 {
+    color: #1d1c1c;
+    font-size: 20px;
+    margin: 0; /* Remove a margem do título */
+  }
+  
+  .Container_Nome_Site h2 a {
+    text-decoration: none; /* Remove a sublinha */
+    color: inherit; /* Faz com que o link herde a cor do elemento pai */
+  }
+  
+  /* Estilo do menu horizontal */
+  nav.menu_horizontal ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+  }
+  
+  nav.menu_horizontal li {
+    position: relative;
+  }
+  
+  nav.menu_horizontal li a {
+    text-decoration: none;
+    color: #1d1c1c;
+    font-size: 18px;
+    margin-right: 20px;
+  }
+  
+  nav.menu_horizontal li a:hover {
+    color: rgb(37, 61, 202);
+  }
+  
+  /* Estilo do submenu Habitat Coral */
+  nav.menu_horizontal .submenu_habitat_coral {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(111, 110, 110, 0.2);
+  }
+  
+  nav.menu_horizontal .submenu_habitat_coral li a {
+    padding: 10px 15px;
+    color: #1d1c1c;
+    display: block;
+    font-size: 17px;
+  }
+  
+  nav.menu_horizontal li:hover .submenu_habitat_coral {
+    display: block;
+  }
+  
+  nav.menu_horizontal .submenu_habitat_coral li a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Estilo do submenu Zonas Geomorficas*/
+  nav.menu_horizontal .submenu_zonas_geomorficas {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(111, 110, 110, 0.2);
+  }
+  
+  nav.menu_horizontal .submenu_zonas_geomorficas li a {
+    padding: 10px 15px;
+    color: #1d1c1c;
+    display: block;
+    font-size: 17px;
+  }
+  
+  nav.menu_horizontal li:hover .submenu_zonas_geomorficas {
+    display: block;
+  }
+  
+  nav.menu_horizontal .submenu_zonas_geomorficas li a:hover {
+    background-color: #f0f0f0;
+  }
+
+.Titulo_Referencias {
+    font-size: 21px;
+    color: #333333;
+    padding-left: 65px;
+    clear: both; 
+    float: left; 
+    margin-top: 100px; 
+    margin-left: 50px;
+  }
+
+  .Referencias {
+    font-size: 18px;
+    text-align: justify;
+    color: #333333;
+    padding-left: 65px;
+    padding-right: 80px;
+    clear: both; 
+    float: left; 
+    margin-top: 20px; 
+    margin-left: 50px;
+    margin-bottom: 20px;
+  }
+
+  .Referencias ul li {
+    margin-bottom: 20px; /* Ajusta el valor según el espacio deseado */
+  }
+

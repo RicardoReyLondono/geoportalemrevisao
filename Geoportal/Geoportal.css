@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+
+.sidebar {
+    width: 25%;
+    height: 100vh;
+    background: #e3eaf6;
+    color: #1d1c1c;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    transition: all 0.4s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Asegura que la barra esté delante del mapa */
+    display: flex;
+    flex-direction: column; /* Que el contenido aparezca verticalmente*/
+}
+
+/* Ajusta el contenido de la barra lateral */
+.sidebar .content {
+    overflow-y: auto; /* Activa el scroll vertical */
+    padding: 10px;
+}
+
+
+.sidebar .content::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+.sidebar .content::-webkit-scrollbar-thumb {
+    background-color: grey; /* Color de la barra para hacer scroll down*/
+}
+
+.sidebar .content::-webkit-scrollbar-track {
+    background-color: white; /* Fondo de la barra */
+}
+
+/* Ajustes para los elementos dentro del scroll */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.sidebar ul li a {
+    color: #1d1c1c;
+    font-size: 15px;
+}
+
+.sidebar ul li:hover {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px; /* Bordes redondos */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaciado entre los elementos */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Container_Bentonicos,
+.Container_Geomorficas,
+.Container_Importancia,
+.Container_problemas {
+    background-color: #ffffff;
+}
+
+
+/* Título del Geoportal */
+.titulo {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    margin-top: 20px;
+}
+
+.titulo h2 {
+    font-size: 18px;
+    color: #1d1c1c;
+    font-weight: bold;
+    margin: 0; 
+}
+
+#Imagen_Logo {
+    width: 30px; 
+    height: 30px; 
+}
+
+.titulo h2 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.arrow {
+    margin-left: 310px; 
+    margin-top: -90px; 
+    position: absolute; 
+    font-size: 40px; 
+    color: rgb(12, 12, 12); 
+    cursor: pointer; 
+}
+
+.arrow_open.visible {
+    display: block;
+}
+
+
+.Legenda_Bentonicos_Explicacion p, .Legenda_Geomorficas_Explicacion p, .Legenda_Explicacion_Importancia_Ecologica, .Legenda_Explicacion_Problematicas, .Legenda_Explicacion_Areasprotegidas {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #000000;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.Titulo_Legenda a{
+    text-decoration: none;
+}

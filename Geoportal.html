@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <title>GeoPortal Ecossistemas Marinhos Cabo Verde</title>
+    
+    <!-- Ligação com ficheiros css -->
+    <link rel="stylesheet" type="text/css" href="Geoportal.css">
+    <link rel="stylesheet" type="text/css" href="Mapa_Geoportal.css">
+
+    <!-- Leaflet css -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Leaflet js -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+
+<body>
+    <!-- Sidebar Esquerda com contéudos -->
+    <div class="sidebar" id="sidebar">
+        <div class="content">
+            <div class="top">
+                <div class="titulo">
+                    <img src="Imagens/Logo.png" width="30" height="30" class="Imagen_Logo" id="Imagen_Logo">
+                    <h2><a href="index.html">GeoPortal dos Ecossistemas Marinhos de Cabo Verde</a></h2>
+                </div>
+            
+        </div>
+        <div class="scroll"> 
+        <ul>
+            <li>
+                <div class="container Container_Bentonicos">
+                    <img src="Imagens/Ecossystemas_marinhos.png" width="70" height="auto" class="Logo_Legenda_Bentonicos">
+                    <div class="Titulo_Legenda"><a href="Ecossistemas_Marinhos.html"><strong>Ecossistemas Marinhos associados aos Habitats Bentónicos</strong></a></div>
+                    <div class="Legenda_Bentonicos_Explicacion">
+                        <p>Ecossistemas localizados no fundo de corpos de água, onde vivem organismos em associação direta com o substrato.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="container Container_Geomorficas">
+                    <img src="Imagens/zonas_geo.png" width="70" height="auto" class="Logo_Legenda_Geomorficas">
+                    <div class="Titulo_Legenda"><a href="zonas_geo.html"><strong>Zonas Geomórficas</strong></a></div>
+                    <div class="Legenda_Geomorficas_Explicacion">
+                        <p>Áreas do fundo dos corpos de água, definidas pelas suas formas e estruturas físicas, resultantes de processos geológicos.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="container Container_Importancia">
+                    <img src="Imagens/parque.png" width="70" height="auto" class="Logo_Legenda_Importancia">
+                    <div class="Titulo_Legenda"><a href="Areas_Importantes.html"><strong>Áreas Marinho-Costeiras de Importância Ecológica</strong></a></div>
+                    <div class="Legenda_Explicacion_Importancia_Ecologica">
+                        <p>Áreas estratégicas de relevância ecológica e elevada biodiversidade, essenciais para a conservação de ecossistemas e a proteção de espécies marinhas.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="container Container_areasprotegidas">
+                    <img src="Imagens/rede_nacional.png" width="70" height="auto" class="Logo_Legenda_areasprotegidas">
+                    <div class="Titulo_Legenda"><a><strong>Rede Nacional de Áreas Protegidas</strong></a></div>
+                    <div class="Legenda_Explicacion_Areasprotegidas">
+                        <p>Rede Nacional de Áreas Protegidas, aprovada pelo Decreto-Lei n.º 3/2003, de 24 de fevereiro, com 
+                            alterações introduzidas pelo Decreto-Lei n.º 44/2006, de 28 de agosto. </p>
+                    </div>
+                </div>
+            </li>
+        </ul>        
+        </div>
+    </div>
+    </div>
+
+<!---------------------------------------------------------------------------------------------------------------------->
+<!------------------------------------------------------- INICIAR MAPA ------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------->
+
+<div id="mapa_geportal"></div>
+
+<!-- Ligações a SRC -->
+
+<!-- Ecossistemas Marinhos -->
+<script src="./Data/ComunidadesCorais_PlanoNacional2015.js"></script>
+<script src="./Data/Coral_Algae_CaboVerde.js"></script>
+<script src="./Data/Rock_CaboVerde.js"></script>
+<script src="./Data/Sand_CaboVerde.js"></script>
+<script src="./Data/SeaGrass_CaboVerde.js"></script>
+<script src="./Data/Comunidades_Seagrass.js"></script>
+
+<!-- Zonas Geomorficas -->
+<script src="./Data/Reef_Slope.js"></script>
+<script src="./Data/Back_Reef_Slope.js"></script>
+<script src="./Data/Sheltered_Reef_Slope.js"></script>
+<script src="./Data/Outer_Reef_Flat.js"></script>
+<script src="./Data/Plateau.js"></script>
+
+<!-- Administrativos -->
+<script src="./Data/Pontocv.js"></script>
+<script src="./Data/IslasCaboVerde.js"></script>
+
+<!-- Areas Protegidas de Cabo Verde -->
+<script src="./Data/Areas_Protegidas_CV.js"></script>
+<script src="./Data/Reserva_Nacional_Tartaruga.js"></script>
+<script src="./Data/Parque_Natural_do_Norte.js"></script>
+<script src="./Data/RNI_IlheuCurralVelho.JS"></script>
+<script src="./Data/Reserva_Natural_Morro_Areia.js"></script>
+<script src="./Data/Monumento_Natural_Ilhéu_de_Sal_Rei.js"></script>
+<script src="./Data/Reserva_Natural_Integral_Ilhéu_Baluarte.js"></script>
+<script src="./Data/Reserva_Natural_Integral_Ilhéu_dos_Pássaros.js"></script>
+<script src="./Data/Reserva_Natural_Boa_Esperanca.js"></script>
+<script src="./Data/Reserva_Natural_Ponta_do_Sol.js"></script>
+<script src="./Data/Paisagem_Protegida_Salinas_Porto_Ingles.js"></script>
+<script src="./Data/Reserva_Natural_das_Casas_Velhas.js"></script>
+<script src="./Data/Reserva_Natural_Praia_de_Moro.js"></script>
+<script src="./Data/Parque_Natural_Norte_da_Ilha_do_Maio.js"></script>
+<script src="./Data/Reserva_Natural_da_Lagoa_Cimidor.js"></script>
+<script src="./Data/Reserva_Natural_Marinha_da_Baía_de_Murdeira.js"></script>
+<script src="./Data/Reserva_Natural_Costa_da_Fragata.js"></script>
+<script src="./Data/Reserva_Natural_Ponta_de_Sino.js"></script>
+<script src="./Data/Paisagem_Protegida_Buracona_Ragona.js"></script>
+<script src="./Data/Paisagem_Protegida_Monte_Grande.js"></script>
+<script src="./Data/Reserva_Natural_Serra_Negra.js"></script>
+<script src="./Data/Paisagem_Protegida_Salinas_de_Pedra_de_Lume_Cagarral.js"></script>
+<script src="./Data/Reserva_Natural_Integral_Ilheus_Branco_Raso.js"></script>
+<script src="./Data/Reserva_Natural_Integral_de_Santa_Luzia.js"></script>
+<script src="./Data/Reserva_Natural_Integral_Ilheus_do_Rombo.js"></script>
+<script src="./Data/Parque_Natural_da_Baia_do_Inferno_e_do_Monte_Angra.js"></script>
+<script src="./Data/Paisagem_Protegida_das_Pombas.js"></script>
+<script src="./Data/Parque_Natural_de_Cruzinha.js"></script>
+<script src="./Data/Reserva_Natural_Monte_do_Alto_das_Cabacas.js"></script>
+<script src="./Data/Turtles_Boavista.js"></script>
+<script src="./Data/banco_noreste.js"></script>
+<script src="./Data/banco_joao_valente.js"></script>
+
+
+
+<script>
+
+// Coordenadas
+    var map = L.map('mapa_geportal').setView([15.79812393118535, -24.866952002832473], 8.4);
+    
+// Base map layer
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    }).addTo(map);
+
+
+// Processo Adicionar Camadas de Informação 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////    ECOSSISTEMAS MARINHOS E HABITATS BENTONICOS       /////////////////////////////////
+
+
+// Simbolo para as comunidades de Coral
+var ComunidadesCorais_ICON = L.icon({
+    iconUrl: '/Imagens/symbol.png',
+    iconSize: [20, 20], // Tamaño del ícono
+    });
+
+
+// Camada Comunidades de Coral
+    var ComunidadesCorais_Plano2015 = L.geoJSON(ComunidadesCorais_Plano2015, {
+    pointToLayer: function (feature, latlng) {
+    
+// Verifica si el objeto feature tiene coordenadas para el marcador
+    if (feature.geometry && feature.geometry.type === 'Point') {
+        return L.marker(latlng, { icon: ComunidadesCorais_ICON });
+    }
+    // Si no es un punto, no se agrega al mapa
+    return null;
+    },
+    onEachFeature: function(feature, layer) {
+    if (feature.properties && feature.properties.IlhaIlhéu && feature.properties.Local && feature.properties.Fonte) {
+        var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.IlhaIlhéu +
+            '<br><strong>Comunidade Coralina:</strong> ' + feature.properties.Local + '<br><strong>Fonte:</strong> ' +
+            feature.properties.Fonte;
+            layer.bindPopup(popupContent);
+    }}});
+
+
+//////// Camada com as áreas de Coral
+var Coral_Algae_CaboVerde = L.geoJSON(Coral_Algae_CaboVerde, {
+    style: function(feature) {
+        return {
+            fillColor: 'orange',
+            color: 'orange',     // Cor do borde 
+            weight: 2,          // Espessura do borde
+            opacity: 1,        
+            fillOpacity: 1,    
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.Nome && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + 
+            feature.properties.Nome + '<br><strong>Habitat Bentônico:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+}}});
+
+
+
+//////// Camada Prados Marinhos - Seagrass
+var Seagrass_CaboVerde = L.geoJSON(Seagrass_CaboVerde, {
+    style: function(feature) {
+        return {
+            fillColor: '#1af637',
+            color: '#1af637',     // COLOR DEL BORDE
+            weight: 4,          // GROSOR DEL BORDE
+            opacity: 1,        // (MANTENER ENTRE 0 Y 1)
+            fillOpacity: 1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.Nome && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.Nome + '<br><strong>Habitat Bentônico:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+}}});
+
+
+///////// Locais com Prados Marinhos 
+
+// Ícono para Seagrass
+var Seagrass_ICON = L.icon({
+    iconUrl: '/Imagens/importancia_pin.png',
+    iconSize: [22, 22], // Tamaño del ícono
+    });
+
+// Crear capa GeoJSON con íconos
+var Lugares_Seagrass = L.geoJSON(Lugares_Seagrass, {
+    pointToLayer: function (feature, latlng) {
+    // Verifica si el objeto feature tiene coordenadas para el marcador
+    if (feature.geometry && feature.geometry.type === 'MultiPoint') {
+    return L.marker(latlng, { icon: Seagrass_ICON });
+    }
+    return null; // Si no es un punto, no se agrega al mapa
+    },
+    onEachFeature: function(feature, layer) {
+    if (feature.properties && feature.properties.Nome_Area && feature.properties.Ilha && feature.properties.Especie && feature.properties.Fonte) {
+    var popupContent = 
+    '<strong>Local:</strong> ' + feature.properties.Nome_Area + '<br>' +
+    '<strong>Ilha:</strong> ' + feature.properties.Ilha + '<br>' +
+    '<strong>Espécie:</strong> ' + feature.properties.Especie + '<br>' +
+    '<strong>Fonte:</strong> ' + feature.properties.Fonte;
+    layer.bindPopup(popupContent);
+    }}});
+
+
+//////// Camada Fundos Rochosos
+var Rock_CaboVerde = L.geoJSON(Rock_CaboVerde, {
+    style: function(feature) {
+    return {
+            fillColor: '#d9d9d9',
+            color: '#d9d9d9',     // COLOR DEL BORDE
+            weight: 2,          // GROSOR DEL BORDE
+            opacity: 1,        // (MANTENER ENTRE 0 Y 1)
+            fillOpacity: 1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.Nome && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.Nome + '<br><strong>Habitat Bentônico:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+}}});
+
+
+////////  Camada Fundos Arenosos
+var Sand_CaboVerde = L.geoJSON(Sand_CaboVerde, {
+    style: function(feature) {
+    return {
+            fillColor: 'yellow',
+            color: 'yellow',     // COLOR DEL BORDE
+            weight: 2,          // GROSOR DEL BORDE
+            opacity: 1,        // (MANTENER ENTRE 0 Y 1)
+            fillOpacity: 1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.Nome && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.Nome + '<br><strong>Habitat Bentônico:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+}}});
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////    ZONAS GEOMORFICAS       ///////////////////////////////////////////////////////////
+
+////////  REEF SLOPE
+var ReefSlope = L.geoJSON(ReefSlope, {
+    style: function(feature) {
+    return {
+            fillColor: '#6e0202',
+            color: '#6e0202',     // COLOR DEL BORDE
+            weight: 3,          // GROSOR DEL BORDE
+            opacity: 1,        // (MANTENER ENTRE 0 Y 1)
+            fillOpacity: 1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.ISLAND && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.ISLAND + '<br><strong>Zona Geomórfica:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+}}});
+
+
+
+////////  BACK REEF SLOPE
+var BackReefSlope = L.geoJSON(BackReefSlope, {
+    style: function(feature) {
+    return {
+            fillColor: '#83037f',
+            color: '#83037f',     // COLOR DEL BORDE
+            weight: 3,          // GROSOR DEL BORDE
+            opacity: 1,        // (MANTENER ENTRE 0 Y 1)
+            fillOpacity: 1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.ISLAND && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.ISLAND + '<br><strong>Zona Geomórfica:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+}}});
+
+
+
+////////  Sheltered Reef Slope
+var ShelteredReefSlope = L.geoJSON(ShelteredReefSlope, {
+    style: function(feature) {
+    return {
+            fillColor: '#8c9e06',
+            color: '#8c9e06',     // COLOR DEL BORDE
+            weight: 3,          // GROSOR DEL BORDE
+            opacity: 1,        // (MANTENER ENTRE 0 Y 1)
+            fillOpacity: 1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.ISLAND && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.ISLAND + '<br><strong>Zona Geomórfica:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+}}});
+
+
+
+////////  Outer Reef Flat
+var OuterReefFlat = L.geoJSON(OuterReefFlat, {
+    style: function(feature) {
+    return {
+            fillColor: '#05a87c',
+            color: '#05a87c',     // COLOR DEL BORDE
+            weight: 3,          // GROSOR DEL BORDE
+            opacity: 1,        // (MANTENER ENTRE 0 Y 1)
+            fillOpacity: 1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.ISLAND && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.ISLAND + '<br><strong>Zona Geomórfica:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+}}});
+
+
+////////  Plateau
+var Plateau = L.geoJSON(Plateau, {
+    style: function(feature) {
+    return {
+            fillColor: '#bcbcbc',
+            color: '#bcbcbc',     // COLOR DEL BORDE
+            weight: 3,          // GROSOR DEL BORDE
+            opacity: 1,        // (MANTENER ENTRE 0 Y 1)
+            fillOpacity: 1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.ISLAND && feature.properties.class) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.ISLAND + '<br><strong>Zona Geomórfica:</strong> ' + feature.properties.class;
+            layer.bindPopup(popupContent);
+}}});
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////    AREAS PROTEGIDAS       ///////////////////////////////////////////////////////////
+
+////////  Areas Protegidas de Cabo Verde
+var AreasProtegidas = L.geoJSON(AreasProtegidas, {
+    style: function(feature) {
+    return {
+          
+            color: '#7bf4a7',     // COLOR DEL BORDE
+            weight: 2,          // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+    };
+    },
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.ilha && feature.properties.categorias && feature.properties.designacao && feature.properties.area_ha) {
+            var popupContent = '<strong>Nome da Ilha/Ilhéu:</strong> ' + feature.properties.ilha + '<br><strong>Categoria:</strong> ' 
+            + feature.properties.categorias + '<br><strong>Nome:</strong> ' + feature.properties.designacao + 
+            '<br><strong>Documento:</strong> <a href="' + feature.properties.link_bo + '" target="_blank">Ver Decreto</a>';
+            layer.bindPopup(popupContent);
+}}});
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////    ADMINISTRATIVOS       ///////////////////////////////////////////////////////////
+
+
+////////  Ponto nome Cabo Verde
+// Crear un ícono de texto sin un punto visible
+var caboVerdeLabel = L.divIcon({
+    className: 'cabo-verde-label',  // Clase para estilos CSS
+    html: '<strong>Cabo Verde</strong>',
+    iconSize: [0, 0],               // Sin tamaño para ocultar un punto
+});
+
+// Agregar la etiqueta al mapa
+L.marker([16.002106683691018, -24.36910171141955], { icon: caboVerdeLabel }).addTo(map);
+
+// Definir estilos CSS 
+var css = `
+    .cabo-verde-label {
+        font-size: 16px;      /* Tamaño de la letra */
+        color: #f9f959;         /* Color de la letra */
+        text-align: center;   /* Centrar el texto */
+        white-space: nowrap;
+        text-shadow: 0px 0px 1px white; /* Sombra para mejor visibilidad */
+    }
+`;
+// Insertar los estilos CSS en el documento
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = css;
+document.getElementsByTagName('head')[0].appendChild(style);
+
+
+
+////////  NOMES ILHAS DE CABO VERDE
+var CaboVerdeIslas = L.geoJSON(CaboVerdeIslas, {
+    pointToLayer: function (feature, latlng) {
+        // Crear un ícono de texto usando L.divIcon
+        var labelIcon = L.divIcon({
+            className: 'CaboVerdeIslas-label', // Clase CSS para estilos personalizados
+            html: feature.properties.nome, // Texto que se mostrará
+            iconSize: null // Sin tamaño, para evitar un contenedor visible
+        });
+        // Retornar el marcador con el ícono de texto
+        return L.marker(latlng, { icon: labelIcon });
+    }
+}).addTo(map);
+
+// Añadir estilos CSS 
+var css = `
+    .CaboVerdeIslas-label {
+        font-size: 13px;         /* Tamaño del texto */
+        color: #fcfcae;          /* Color del texto */
+        text-align: center;      /* Centrar el texto */
+        white-space: nowrap;     /* Evitar que el texto se divida */
+        text-shadow: 0px 0px 1px white; /* Sombra para visibilidad */
+    }
+`;
+
+// Insertar el CSS en el documento
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = css;
+document.getElementsByTagName('head')[0].appendChild(style);
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////    AREAS DE IMPORTANCIA ECOLOGICA    /////////////////////////////////////////////////
+
+
+////////////////// ILHA BOAVISTA 
+
+////////  Areas de Importancia Ecologica
+var ReservaNacionalTartaruga = L.geoJSON(ReservaNacionalTartaruga, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Nacional da Tartaruga</strong></p></div>' +
+
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' +
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação das tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</span>) (tartaruga-comum)</strong>. Estima-se que cerca de 2/3 das 3.000 fêmeas desta espécie que nidificam em Cabo Verde utilizam esta região. Existem, aproximadamente, 14 praias onde há registro de ninhos de tartarugas.</p></div>' +
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Bird"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Aves limícolas, migratórias e as colónias de Rabo-de-Junco (<span class="nomecientifico">Phaethon aethereus</span>) localizadas em zonas húmidas e terras salgadas.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área com praias de areia branca para a nidificação de tartarugas.</p></div></div>';
+        layer.bindPopup(popupContent);
+    }
+});
+
+var ParqueNaturaldoNorte = L.geoJSON(ParqueNaturaldoNorte, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Parque Natural do Norte</strong></p></div>' +
+
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' +
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</span>) (tartaruga-comum)</strong>. Encontram-se também concentrações de tartarugas juvenis da espécie <strong>Tartaruga-de-casco-levantado(<spam class="nomecientifico">Eretmochelys imbricata</span>)</strong>. Estima-se que existam 21 praias onde há registro de ninhos de tartarugas.</p></div>' +
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Bird"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de aves de rapinas e estepárias.</p></div>' +
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_coral.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol coral"/>' +
+        '<p style="margin: 0;"><strong>Presença Importante de Corais</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença importante de comunidades coralinas e agregações de <strong>corais moles do género Palytoa sp </strong>na zona norte, especialmente nas <strong>baías de Gatas, Ponta Antónia e Derrubado</strong>.</p></div>' +
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_invertebrados.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol invertebrados"/>' +
+        '<p style="margin: 0;"><strong>Invertebrado marinhos</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Junto as comunidades coralinas, encontram-se uma grande variedade de espécies de invertebrados marinhos, incluinda uma espécie do género Conus, cuja distribuição e limitada a estas baías (<spam class="nomecientifico">Conus diminutus</span>)</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_shark.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol shark"/>' +
+        '<p style="margin: 0;"><strong>Presença de Tubarões</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área frequentada por várias espécies de tubarões.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área com praias de areia branca para a nidificação de tartarugas.</p></div></div>';
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var RNI_IlheuCurralVelho = L.geoJSON(RNI_IlheuCurralVelho, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Integral Ilheu Curral Velho</strong></p></div>' +
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Bird"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de aves insulares tais como a Fragata (<spam class="nomecientifico">Fregata magnificens</spam>), Rabil (<spam class="nomecientifico">Fregata magnifiscens</spam>), Cagarra-de-Cabo-Verde (<spam class="nomecientifico">Calonectris edwardsii</spam>), e Alcatraz (<spam class="nomecientifico">Sula leucogaster</spam>), Rabo-de-junco (<spam class="nomecientifico">Phaethon aethereus</spam>) e o Pedreirinho (<spam class="nomecientifico">Oceanodroma castro</spam>).</p></div>';
+        layer.bindPopup(popupContent);
+    }
+});
+
+
+var Reserva_Natural_Morro_de_Areia = L.geoJSON(Reserva_Natural_Morro_de_Areia, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Morro de Areia</strong></p></div>' +
+
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' +
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum)</strong>. Há dois praias com registro de ninhos de tartarugas.</p></div>' +
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_invertebrados.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol invertebrados"/>' +
+        '<p style="margin: 0;"><strong>Invertebrado marinhos</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Alta diversidade de espécies de invertebrados.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_shark.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol shark"/>' +
+        '<p style="margin: 0;"><strong>Presença de Tubarões</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área frequentada por várias espécies de tubarões <strong>(tubarão-gata)</strong></p></div>'+
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área com praias de areia branca para a nidificação de tartarugas, e com importantes processos ecológicos derivados da dinâmica arenosa, caracterizada pela presença de espécies endémicas no Arquipélago de Cabo Verde, como o Rabo-de-Junco (<spam class="nomecientifico">Phaethon aethereus</spam>).</p></div></div>';
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Monumento_Natural_Ilhéu_de_Sal_Rei = L.geoJSON(Monumento_Natural_Ilhéu_de_Sal_Rei, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Monumento Natural Ilhéu de Sal Rei</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Ao contrário de outros ilhéus, neste há uma grande presença de materiais basálticos, o que confere uma característica geológica distintiva à sua formação.</p></div></div>';
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Reserva_Natural_Integral_Ilhéu_Baluarte = L.geoJSON(Reserva_Natural_Integral_Ilhéu_Baluarte, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Integral Ilhéu Baluarte</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum)</strong>.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>O ilhéu é utilizado como espaço de alimentação e nidificação de aves como a Rabil (Fregata magnificens) que aqui nidifica ocasionalmente e o Alcatraz (Sula leucogaster)..</p></div>';
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Reserva_Natural_Integral_Ilhéu_dos_Pássaros = L.geoJSON(Reserva_Natural_Integral_Ilhéu_dos_Pássaros, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Integral Ilhéu dos Pássaros</strong></p></div>' +
+
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' +
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_coral.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol coral"/>' +
+        '<p style="margin: 0;"><strong>Presença Importante de Corais</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença importante de comunidades coralinas que ligam o ilhéu com a ilha principal.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença da ave marinha o <strong>Pedreiro-Azul / Painho-de-Ventre-Branco</strong> (<spam class="nomecientifico">Pelagodroma marina</spam>).</p></div>'+
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>O substrato arenoso facilita a existência de espécies vegetais (<spam class="nomecientifico">Zygophyllum fontanesii e Suaeda vermiculata</spam>) e estas permitem a sobrevivência da pequena ave marinha o Pedreiro-Azul / Painho-de-Ventre-Branco (<spam class="nomecientifico">Pelagodroma marina</spam>), espécie anteriormente abundante no arquipélago, objeto no presente de uma drástica redução.</p></div></div></div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Reserva_Natural_Boa_Esperanca = L.geoJSON(Reserva_Natural_Boa_Esperanca, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Boa Esperança</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas. Existem registros de ninhos na Praia Cabral.</p></div>' +
+
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Esta área é caracterizada por uma dinâmica de areias significativa, que favorece a presença de tamareiras (<spam class="nomecientifico">Phoenix atlantica</spam>), uma espécie adaptada a condições específicas de solos arenosos. A região também inclui a foz da Ribeira de Rabil, uma zona húmida de grande importância ecológica, classificada como sítio Ramsar.</div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Reserva_Natural_Ponta_do_Sol = L.geoJSON(Reserva_Natural_Ponta_do_Sol, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Ponta do Sol</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, com registros em dois praias Ponta do Sol e Água Doce.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes de avifauna insular como Rabo-de-Junco (<spam class="nomecientifico">Phaethon aethereus</spam>) e o Guincho (<spam class="nomecientifico">Pandion haliaetus</spam>).</p></div>'+
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área com alto valor geológico por causa da sua natureza vulcânica e campos de dunas fósseis.</div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+// Ícono para las tortugas
+var TurtlesBoavista_ICON = L.icon({
+    iconUrl: '/Imagens/turtle_importancia.png', // Ruta ajustada
+    iconSize: [20, 20], // Tamaño del ícono
+});
+
+// Capa GeoJSON para las tortugas con marcador 
+var TurtlesLayer = L.geoJSON(TurtlesLayer, {
+    pointToLayer: function (feature, latlng) {
+        // Coloca un marcador para puntos 
+        return L.marker(latlng, { icon: TurtlesBoavista_ICON });
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Ponto de Nidificação de Tartarugas Caretta caretta (tartaruga-comum)</strong></p></div>';
+        
+        layer.bindPopup(popupContent);
+    }});
+
+
+// Unir todas as camadas
+var areasprotegidasboavista = L.featureGroup([ReservaNacionalTartaruga, ParqueNaturaldoNorte, RNI_IlheuCurralVelho, 
+    Reserva_Natural_Morro_de_Areia, Monumento_Natural_Ilhéu_de_Sal_Rei, Reserva_Natural_Integral_Ilhéu_Baluarte, 
+    Reserva_Natural_Integral_Ilhéu_dos_Pássaros,Reserva_Natural_Boa_Esperanca, Reserva_Natural_Ponta_do_Sol, TurtlesLayer]);
+
+
+////////////////// ILHA MAIO
+
+var Paisagem_Protegida_Salinas_Porto_Ingles = L.geoJSON(Paisagem_Protegida_Salinas_Porto_Ingles, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Paisagem Protegida Salinas Porto Inglês</strong></p></div>' +
+
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' +
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente de dois espécies: <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum) e cabeçuda (<spam class="nomecientifico">Caretta caretta sp (Cheloniidae)</spam>)</strong>.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_whale.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Passagem de baleias-de-bossa</strong></p></div>'+
+        '<div class="Descricao_Tartaruga"><p>Área de Passagem de baleias</p></div>'+
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área com praias de areia branca para a nidificação de tartarugas. Destaca-se <strong>Praias de Salinas e Bancona.</strong></div>'+
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes de avifauna insular</div></div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Reserva_Natural_das_Casas_Velhas = L.geoJSON(Reserva_Natural_das_Casas_Velhas, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural das Casas Velhas</strong></p></div>' +
+
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' +
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p>' +
+        '</div>' +
+        '<div class="Descricao_Tartaruga">' +
+        '<p>Presença e nidificação de tartarugas marinhas, especialmente da espécie: ' +
+        '<strong><span class="nomecientifico">Caretta caretta</span> (tartaruga-comum)</strong>.</p>' +
+        '</div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_whale.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Passagem de baleias-de-bossa</strong></p></div>'+
+        '<div class="Descricao_Tartaruga"><p>Área de Passagem de baleias</p></div>'+
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_shark.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol shark"/>' +
+        '<p style="margin: 0;"><strong>Presença de Tubarões</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área frequentada por várias espécies de tubarões.</p></div>'+
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área com praias de areia branca para a nidificação de tartarugas. Destaca-se a<strong>Praia de Djampadja</strong></div>'+
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes de avifauna insular, assim como de populações de aves limícolas e migratórias</div></div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+var Reserva_Natural_Praia_de_Moro = L.geoJSON(Reserva_Natural_Praia_de_Moro, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Praia de Moro</strong></p></div>' +
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente de dois espécies: <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum) e cabeçuda (<spam class="nomecientifico">Caretta caretta sp (Cheloniidae)</spam>)</strong>.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_whale.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Passagem de baleias-de-bossa</strong></p></div>'+
+        '<div class="Descricao_Tartaruga"><p>Área de Passagem de baleias</p></div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+var Parque_Natural_Norte_da_Ilha_do_Maio = L.geoJSON(Parque_Natural_Norte_da_Ilha_do_Maio, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Parque Natural Norte da Ilha do Maio</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' + 
+
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente de dois espécies: <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum) e cabeçuda (<spam class="nomecientifico">Caretta caretta sp (Cheloniidae)</spam>)</strong>.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_whale.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Passagem de baleias-de-bossa</strong></p></div>'+
+        '<div class="Descricao_Tartaruga"><p>Área de Passagem de baleias</p></div>'+
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_shark.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol shark"/>' + 
+        '<p style="margin: 0;"><strong>Presença de Tubarões</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Área frequentada por várias espécies de tubarões, especialmente nas praias localizados no norte da ilha. </p></div>'+ 
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_coral.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol coral"/>' + 
+        '<p style="margin: 0;"><strong>Presença Importante de Corais</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Presença importante de comunidades coralinas, especialmente nas praias de Porto Cais, Praia Real, Santana e Galeão.</p></div>' + 
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes de avifauna insular. Destaca-se o Ilhéu de Laje Branca onde a uma colónia do Pedreiro Azul.</div>'+
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_fish.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Alta diversidade marinha:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de várias espécies endémicas de nudibrânquios e outros moluscos, espécies de peixes de interesse ecológico e comercial, lagostas e búzio-cabra.</div>'+
+
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' + 
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Área com praias de areia branca para a nidificação de tartarugas. Destacam-se as seguintes praias: <strong>Calhetinha, Santana, Porto Cais, Farol, Praia Real, Galeão, Lage Branca, Pedrenau, Santo António, Praia Gonçalo, Pedro Vaz, Boca Ribeira, Guarda. </strong></div></div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+var Reserva_Natural_da_Lagoa_Cimidor = L.geoJSON(Reserva_Natural_da_Lagoa_Cimidor, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural da Lagoa Cimidor</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' + 
+
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente de dois espécies: <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum) e cabeçuda (<spam class="nomecientifico">Caretta caretta sp (Cheloniidae)</spam>)</strong>.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes de avifauna insular.</div>'+
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' + 
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Área com praias de areia branca para a nidificação de tartarugas.</div></div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+    var areasprotegidasmaio = L.featureGroup([Paisagem_Protegida_Salinas_Porto_Ingles, Reserva_Natural_das_Casas_Velhas, 
+    Reserva_Natural_Praia_de_Moro, Parque_Natural_Norte_da_Ilha_do_Maio, Reserva_Natural_da_Lagoa_Cimidor]);
+
+
+////////////////// ILHA SAL
+
+
+var Reserva_Natural_Marinha_da_Baía_de_Murdeira = L.geoJSON(Reserva_Natural_Marinha_da_Baía_de_Murdeira, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Marinha da Baía de Murdeira</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' + 
+
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum).</strong>.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_whale.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Passagem de baleias-de-bossa</strong></p></div>'+
+        '<div class="Descricao_Tartaruga"><p>Presença estacional das <strong>baleias rorqual (<spam class="nomecientifico">Megaptera novaeangliae</spam>)</strong>, especie ameaçada.</p></div>'+
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes de avifauna insular, tais como guinchos (<spam class="nomecientifico">Pandion haliaetus</spam>) e rabo-de-juncos (<spam class="nomecientifico">Phaethon aethereus</spam>)</div>'+
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' + 
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Área com praias de areia branca para a nidificação de tartarugas.</div></div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Reserva_Natural_Costa_da_Fragata = L.geoJSON(Reserva_Natural_Costa_da_Fragata, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Costa da Fragata</strong></p></div>' +
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum).</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes de avifauna insular, tais como guinchos (<spam class="nomecientifico">Pandion haliaetus</spam>) e rabo-de-juncos (<spam class="nomecientifico">Phaethon aethereus</spam>)</div>'+
+
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Área com praias de areia branca para a nidificação de tartarugas, que além disso têm um alto valor ecológico permitindo a existência de formações dunares.</div></div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Reserva_Natural_Ponta_de_Sino = L.geoJSON(Reserva_Natural_Ponta_de_Sino, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Ponta de Sinó</strong></p></div>' +
+        
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum).</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes de avifauna insular, assim como de espécies migratórias.</div>'+
+
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Praias importantes para o ciclo biológico das tartarugas, com ecossistema de terras salgadas que permitem a presença de avifauna local e migratória.</div></div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Paisagem_Protegida_Buracona_Ragona = L.geoJSON(Paisagem_Protegida_Buracona_Ragona, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Paisagem Protegida Buracona-Ragona</strong></p></div>' +
+ 
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Presença de formas vulcânicas singulares como lavas almofadadas e tubos vulcânicos.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+var Paisagem_Protegida_Monte_Grande = L.geoJSON(Paisagem_Protegida_Monte_Grande, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Paisagem Protegida Monte Grande</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes de avifauna insular.</div>'+
+ 
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Valor geológico das rochas, como as pertencentes ao setor de pillow lavas na região costeira.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Reserva_Natural_Serra_Negra = L.geoJSON(Reserva_Natural_Serra_Negra, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Serra Negra</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' + 
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum).</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_coral.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol coral"/>' + 
+        '<p style="margin: 0;"><strong>Presença Importante de Corais</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Presença importante de comunidades coralinas.</p></div>' + 
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Área de nidificação para várias aves, incluindo espécies migratórias e endêmicas como o rabo-de-junco e a cagarra.</div>'+
+ 
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Formações geológicas vulcânicas únicas, que tornam a Serra Negra uma área de grande interesse científico.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Paisagem_Protegida_Salinas_de_Pedra_de_Lume_Cagarral = L.geoJSON(Paisagem_Protegida_Salinas_de_Pedra_de_Lume_Cagarral, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Paisagem Protegida Salinas de Pedra de Lume e Cagarral</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>A região é um local importante para aves migratórias.</div>'+
+ 
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>A formação geológica das salinas, situada dentro da cratera de um antigo vulcão.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+    var areasprotegidassal = L.featureGroup([Reserva_Natural_Marinha_da_Baía_de_Murdeira, Reserva_Natural_Costa_da_Fragata, 
+    Reserva_Natural_Ponta_de_Sino,Paisagem_Protegida_Buracona_Ragona, Paisagem_Protegida_Monte_Grande, 
+    Reserva_Natural_Serra_Negra, Paisagem_Protegida_Salinas_de_Pedra_de_Lume_Cagarral]);
+
+
+////////////////// SAO VICENTE
+
+var Reserva_Natural_Integral_Ilheus_Branco_Raso = L.geoJSON(Reserva_Natural_Integral_Ilheus_Branco_Raso, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Integral Ilheus Branco e Raso</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' + 
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum).</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +  
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Presença de espécies importantes a nível internacional e nacional, tais como a cagarra (<spam class="nomecientifico"> Calonectris edwardsii </spam>), o pedreirinho (<spam class="nomecientifico"> Hydrobates jabejabe</spam>), o joão-preto (<spam class="nomecientifico"> Bulweria bulwerii </spam>), o pedreiro (<spam class="nomecientifico"> Puffinus Iherminieri boydi </spam>), o alcatraz (<spam class="nomecientifico"> Sula leucogaster </spam>), e o rabo-de-junco (<spam class="nomecientifico"> Phaethon aethereus </spam>). <strong>A cagarra e o pedreirinho são espécies endémicas </strong> e o pedreiro subespécie endémica de Cabo Verde. </div>'+ 
+ 
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_fish.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' + 
+        '<p style="margin: 0;"><strong>Alta diversidade marinha:</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p> As águas ao redor dos ilhéus são ricas em biodiversidade, funcionando como áreas de desova e alimentação para diversas espécies marinhas, incluindo peixes, tartarugas e moluscos. Também é um refúgio importante para a <strong>foca-monge-do-Mediterrâneo</strong> (<spam class="nomecientifico">Monachus monachus</spam>), uma das espécies de mamíferos mais ameaçadas do mundo.</div>'+ 
+
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Ilhéus com praias importantes para a nidificaçáo das tartarugas.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Reserva_Natural_Integral_de_Santa_Luzia = L.geoJSON(Reserva_Natural_Integral_de_Santa_Luzia, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural de Santa Luzia</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' + 
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Área de alimentação e passagem para tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum).</strong></p></div>' +
+ 
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_coral.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol coral"/>' + 
+        '<p style="margin: 0;"><strong>Presença Importante de Corais</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Presença importante de comunidades coralinas.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_fish.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' + 
+        '<p style="margin: 0;"><strong>Alta diversidade marinha:</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p> As águas oferecem proteção a espécies ameaçadas de peixes e mamíferos marinhos, como golfinhos e baleias, que utilizam a área para alimentação e descanso durante migrações.</div>'+ 
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_whale.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Passagem de baleias</strong></p></div>'+
+        '<div class="Descricao_Tartaruga"><p>Área de Passagem de baleias</p></div>'+
+
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Ilhéus com praias importantes para a nidificaçáo das tartarugas.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+    var areasprotegidasaovicente = L.featureGroup([Reserva_Natural_Integral_Ilheus_Branco_Raso,
+    Reserva_Natural_Integral_de_Santa_Luzia]);
+
+
+////////////////// BRAVA
+
+
+var Reserva_Natural_Integral_Ilheus_do_Rombo = L.geoJSON(Reserva_Natural_Integral_Ilheus_do_Rombo, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Integral Ilheus do Rombo</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' + 
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Área de alimentação, passagem e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum).</strong></p></div>' +
+ 
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_coral.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol coral"/>' + 
+        '<p style="margin: 0;"><strong>Presença Importante de Corais</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Presença importante de comunidades coralinas.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +  
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de aves marinhas como pedreirinho (<spam class="nomecientifico">Hydrobates jabejabe</spam>); pedreiro-azul (<spam class="nomecientifico">Pelagodroma marina eadesorum</spam>); joão-preto (<spam class="nomecientifico">Bulweria bulwerii</spam>), pedreiro (<spam class="nomecientifico">Puffinus lherminieri boydi</spam>) e rabo-de-junco (<spam class="nomecientifico">Phaethon aethereus</spam>), sendo que o <strong>pedreirinho é uma espécie endêmica </strong>e o pedreiro-azul e o pedreiro subsespécies endêmicas de Cabo Verde.</div>'+ 
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_fish.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' + 
+        '<p style="margin: 0;"><strong>Alta diversidade marinha:</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Suas águas circundantes oferecem um habitat marinho crucial para várias espécies, incluindo peixes, tartarugas marinhas e mamíferos marinhos.</div>'+ 
+
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Ilhéus com praias importantes para a nidificaçáo das tartarugas.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+    var areasprotegidasbrava = L.featureGroup([Reserva_Natural_Integral_Ilheus_do_Rombo]);
+
+
+////////////////// SANTIAGO
+
+
+var Parque_Natural_da_Baia_do_Inferno_e_do_Monte_Angra = L.geoJSON(Parque_Natural_da_Baia_do_Inferno_e_do_Monte_Angra, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Parque Natural da Baia do Inferno e do Monte Angra</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' + 
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Área de alimentação, passagem e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum).</strong></p></div>' +
+ 
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_coral.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol coral"/>' + 
+        '<p style="margin: 0;"><strong>Presença Importante de Corais que oferecem refúgio e locais de reprodução para várias espécies marinhas.</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Presença importante de comunidades coralinas.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +   
+        '<img src="Imagens/symbol_bird.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +   
+        '<p style="margin: 0;"><strong>Aves emblemáticas:</strong></p></div>' +   
+        '<div class="Descricao_Tartaruga"><p>Presença e nidificação de aves marinhas como a Cagarra (<spam class="nomecientifico"> Calonectris edwardsii </spam>) e outras espécies endêmicas e migratórias.</div>'+ 
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_fish.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' + 
+        '<p style="margin: 0;"><strong>Alta diversidade marinha:</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>A baía possui uma grande abundância de vida marinha devido à sua topografia e dinâmica costeira.</div>'+ 
+
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>Topografia e dinâmica costeira relevante, que permitem concentrar nutrientes e atraem diversas espécies.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+    var areasprotegidasantiago = L.featureGroup([Parque_Natural_da_Baia_do_Inferno_e_do_Monte_Angra]);
+
+
+////////////////// SANTO ANTAO
+
+
+var Paisagem_Protegida_das_Pombas = L.geoJSON(Paisagem_Protegida_das_Pombas, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Paisagem Protegida das Pombas</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Área de alimentação, passagem e nidificação de tartarugas marinhas, especialmente da espécie <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum).</strong></p></div>';
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+
+var Parque_Natural_de_Cruzinha = L.geoJSON(Parque_Natural_de_Cruzinha, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Parque Natural de Cruzinha</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' + 
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Área de alimentação e passagem de tartarugas marinhas, especialmente de dois espécies <strong>(<spam class="nomecientifico">Caretta caretta</spam>) (tartaruga-comum) e (<spam class="nomecientifico">Chelonia mydas</spam>) (tartaruga-verde)</strong></p></div>' +
+ 
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_coral.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol coral"/>' + 
+        '<p style="margin: 0;"><strong>Presença Importante de Corais que oferecem refúgio e locais de reprodução para várias espécies marinhas.</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>Presença importante de comunidades coralinas.</p></div>' +
+
+        '<div style="display: flex; align-items: center;">' + 
+        '<img src="Imagens/symbol_fish.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' + 
+        '<p style="margin: 0;"><strong>Alta diversidade marinha:</strong></p></div>' + 
+        '<div class="Descricao_Tartaruga"><p>A região é rica em biodiversidade marinha, com uma grande variedade de peixes, invertebrados e outros organismos aquáticos.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+    var areasprotegidasaoantao = L.featureGroup([Paisagem_Protegida_das_Pombas,Parque_Natural_de_Cruzinha]);
+
+
+////////////////// SAO NICOLAU
+
+
+var Reserva_Natural_Monte_do_Alto_das_Cabacas = L.geoJSON(Reserva_Natural_Monte_do_Alto_das_Cabacas, {
+    style: function(feature) {
+        return {
+            color: '#1dff19',     // COLOR DEL BORDE
+            weight: 2,           // GROSOR DEL BORDE
+            fillOpacity: 0.1,    // OPACIDAD DEL RELLENO
+        };
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Reserva Natural Monte do Alto das Cabaças</strong></p></div>' +
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_turtle.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol Turtle"/>' +
+        '<p style="margin: 0;"><strong>Presença e Nidificação de Tartarugas</strong></p></div>'+ 
+        '<div class="Descricao_Tartaruga"><p>Área de alimentação e passagem de tartarugas marinhas ameaças, tais como espécies ameaçadas, como a <strong>(<spam class="nomecientifico">Dermochelys coriacea</spam>) (tartaruga-de-couro)</div>';
+ 
+        layer.bindPopup(popupContent);
+    }});
+
+
+    var areasprotegidasaonicolau = L.featureGroup([Reserva_Natural_Monte_do_Alto_das_Cabacas]);
+
+
+
+////////////////// BANCOS NORESTE E JOAO VALENTE
+
+
+var joao_valente_ICON = L.icon({
+    iconUrl: '/Imagens/importancia_pin.png', // Ruta ajustada
+    iconSize: [25, 25], // Tamaño del ícono
+});
+// Capa GeoJSON para las tortugas con marcador personalizado
+
+var banconoreste = L.geoJSON(banconoreste, {
+    pointToLayer: function (feature, latlng) {
+        // Coloca un marcador personalizado para puntos GeoJSON
+        return L.marker(latlng, { icon: joao_valente_ICON });
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Banco Noreste</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' +  
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_fish.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Alta diversidade marinha:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>Presença significativa de várias espécies, com uma paisagem marinha amplamente dominada por densos cardumes de três espécies: o <strong>peixe-donzela-de-Lubbock (<spam class="nomecientifico">Chromis lubbocki</spam>)</strong>, uma espécie endémica de Cabo Verde; o <strong>xaréu-preto (<spam class="nomecientifico">Caranx lugubris</spam>)</strong>; e o <strong>peixe-porco (<spam class="nomecientifico">Canthidermis sufflamen</spam>)</strong>. Adicionalmente, também há registros de espécies endémicas de Cabo Verde em cardumes relativamente densos como <strong>(<spam class="nomecientifico">Similiparma hermani</spam>) (peixe-donzela)</strong> e <strong>(<spam class="nomecientifico">Holacanthus africanus</spam>) (peixe-anjo)</strong>. </div>'+
+ 
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>A parte superior deste monte submarino atua simultaneamente como um ponto de atração e como uma ponte de passagem para a dispersão de espécies costeiras. As interações oceanográficas e topográficas criam condições que sustentam uma comunidade permanente de peixes, reforçada por esses processos ecológicos.</div>'; 
+
+        layer.bindPopup(popupContent);
+    }});
+
+
+var joao_valente_ICON = L.icon({
+    iconUrl: '/Imagens/importancia_pin.png', // Ruta ajustada
+    iconSize: [25, 25], // Tamaño del ícono
+});
+
+// Capa GeoJSON para las tortugas con marcador personalizado
+var banco_joao_valente = L.geoJSON(banco_joao_valente, {
+    pointToLayer: function (feature, latlng) {
+        // Coloca un marcador personalizado para puntos GeoJSON
+        return L.marker(latlng, { icon: joao_valente_ICON });
+    },
+    onEachFeature: function (feature, layer) {
+        var popupContent = 
+        '<div class="Nome_Area_Ecologica" style="margin-bottom: 10px;">' +
+        '<p><strong>Banco João Valente</strong></p></div>' +
+        '<div class="popup-scroll" style="max-height: 250px; overflow-y: scroll;">' +  
+
+        '<div style="display: flex; align-items: center;">' +
+        '<img src="Imagens/symbol_fish.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol birds"/>' +
+        '<p style="margin: 0;"><strong>Alta diversidade marinha:</strong></p></div>' +
+        '<div class="Descricao_Tartaruga"><p>O Banco João Valente apresenta uma maior riqueza de espécies em comparação com o Banco do Noroeste, apesar de a densidade de peixes ser menor. Entre as espécies endémicas destacam-se <strong>(<spam class="nomecientifico">Diplodus fasciatus</spam>)</strong>, <strong>(<spam class="nomecientifico">D. prayensis</spam>)</strong>, <strong>(<spam class="nomecientifico">C. lubbocki</spam>)</strong> e <strong>(<spam class="nomecientifico">Abudefduf luridus</spam>)</strong>. Esta maior diversidade deve-se provavelmente à presença de uma cobertura significativa de algas e a uma área mais extensa, que oferece habitats adicionais, mais variados e adequados para diferentes espécies.</div>'+
+ 
+        '<div style="display: flex; align-items: center;">' +  
+        '<img src="Imagens/symbol_rocks.png" style="width: 23px; height: auto; margin-right: 5px;" alt="Symbol rocks"/>' +  
+        '<p style="margin: 0;"><strong>Importância geomorfológica:</strong></p></div>' +  
+        '<div class="Descricao_Tartaruga"><p>A parte superior deste monte submarino atua simultaneamente como um ponto de atração e como uma ponte de passagem para a dispersão de espécies costeiras. As interações oceanográficas e topográficas criam condições que sustentam uma comunidade permanente de peixes, reforçada por esses processos ecológicos.</div>'; 
+        
+        layer.bindPopup(popupContent);
+    }});
+
+
+    var areasbancos = L.featureGroup([banconoreste, banco_joao_valente]);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////    LEGENDA ECOSSISTEMAS MARINHOS     /////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////    LEGENDA ECOSSISTEMAS MARINHOS   ///////////////////////////////////////////////////////////
+
+// Etapa 1: Criar variable que contenha todas as camadas de uma única entidade
+var ecossistemas_marinhos = L.featureGroup([ComunidadesCorais_Plano2015, Seagrass_CaboVerde, Coral_Algae_CaboVerde, Lugares_Seagrass, Rock_CaboVerde, Sand_CaboVerde])
+
+// Etapa 2: Mapear as camadas em formato HTML e definir estilos
+var overlayMapsBentonicos = { 
+    "<strong><span style='font-size: 15px;'>Ecossistemas Marinhos e Habitats Bentónicos</span></strong>": ecossistemas_marinhos,
+    "<img src='Imagens/symbol.png' style='width: 18px; height: 18px;'> <span style='font-size: 14px;'> Comunidades de Corais PNGC 2014</span>": ComunidadesCorais_Plano2015,
+    "<img src='Imagens/color_coral.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'>Áreas com Coral</span>": Coral_Algae_CaboVerde,
+    "<img src='Imagens/color_seagrass.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'>Áreas com Prados Marinhos (Seagrass)</span>": Seagrass_CaboVerde,
+    "<img src='Imagens/importancia_pin.png' style='width: 18px; height: 18px;'> <span style='font-size: 14px;'>Locais Georreferenciados de Prados Marinhos</span>": Lugares_Seagrass,
+    "<img src='Imagens/color_rock.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'>Habitat Bentónico: Fundos Rochosos</span>": Rock_CaboVerde,
+    "<img src='Imagens/color_sand.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'>Habitat Bentónico: Fundos Arenosos</span>": Sand_CaboVerde,
+};
+
+// Etapa 3: Criar o controle de camadas 
+var layerControlBentonicos = L.control.layers(null, overlayMapsBentonicos, { collapsed: true, position: 'topright' })
+.addTo(map);
+
+
+
+/////////////////////////////////////////    LEGENDA ZONAS GEOMORFICAS   ///////////////////////////////////////////////////////////
+
+
+// Etapa 1: Criar variable que contenha todas as camadas de uma única entidade
+var zonasgeo = L.featureGroup([ReefSlope, BackReefSlope, ShelteredReefSlope, OuterReefFlat, Plateau])
+
+// Etapa 2: Mapear as camadas em formato HTML e definir estilos
+var overlayMapsZonasGeo = {
+    "<strong><span style='font-size: 15px;'>Zonas Geomórficas</span></strong>": zonasgeo,
+    "<img src='Imagens/color_ReefSlope.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Reef Slope": ReefSlope,
+    "<img src='Imagens/color_BackReefSlope.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Back Reef Slope": BackReefSlope,
+    "<img src='Imagens/color_ShelteredReefSlope.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Sheltered Reef Slope": ShelteredReefSlope,
+    "<img src='Imagens/color_OuterReefFlat.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Outer Reef Flat": OuterReefFlat,
+    "<img src='Imagens/color_plateau.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Plateau": Plateau,
+};
+
+// Etapa 3: Criar o controle de camadas
+var layerControlZonasGeo = L.control.layers(null, overlayMapsZonasGeo, { collapsed: true, position: 'topright' })
+.addTo(map);
+
+
+
+
+/////////////////////////////////////////  LEGENDA RELEVANCIA ECOLOGICA   ///////////////////////////////////////////////////////////
+
+
+// Etapa 1: Criar variable que contenha todas as camadas de uma única entidade
+var relevancia_ambiental = L.featureGroup([areasprotegidasaoantao, areasprotegidasaovicente, areasprotegidasaonicolau, areasprotegidassal, areasprotegidasboavista, areasbancos, areasprotegidasmaio, areasprotegidasantiago, areasprotegidasbrava])
+
+// Etapa 2: Mapear as camadas em formato HTML e definir estilos
+var overlayMapsRelevancia = {
+    "<strong><span style='font-size: 15px;'>Áreas Marinhas e Costeiras de Importância Ecológica</span></strong>": relevancia_ambiental,
+    "<img src='Imagens/relevancia.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Áreas Marinho-Costeiras Importantes em São Antão": areasprotegidasaoantao,
+    "<img src='Imagens/relevancia.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Áreas Marinho-Costeiras Importantes em São Vicente": areasprotegidasaovicente,
+    "<img src='Imagens/relevancia.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Áreas Marinho-Costeiras Importantes em São Nicolau": areasprotegidasaonicolau,
+    "<img src='Imagens/relevancia.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Áreas Marinho-Costeiras Importantes na Sal": areasprotegidassal,
+    "<img src='Imagens/relevancia.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Áreas Marinho-Costeiras Importantes na Boavista": areasprotegidasboavista,
+    "<img src='Imagens/importancia_pin.png' style='width: 18px; height: 18px;'> <span style='font-size: 14px;'> Áreas Marinho-Costeiras Importantes nos Bancos Noreste e João Valente</span>": areasbancos,
+    "<img src='Imagens/relevancia.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Áreas Marinho-Costeiras Importantes em Maio": areasprotegidasmaio,
+    "<img src='Imagens/relevancia.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Áreas Marinho-Costeiras Importantes em Santiago": areasprotegidasantiago,
+    "<img src='Imagens/relevancia.png' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'> Áreas Marinho-Costeiras Importantes na Brava": areasprotegidasbrava,
+    
+};
+
+// Etapa 3: Criar o controle de camadas
+var layerControlRelevancia = L.control.layers(null, overlayMapsRelevancia, { collapsed: true, position: 'topright' })
+.addTo(map);
+
+
+/////////////////////////////////////////    LEGENDA AREAS PROTEGIDAS   ///////////////////////////////////////////////////////////
+
+// Etapa 2: Mapear as camadas em formato HTML e definir estilos
+var overlayMapsAdministrativo = {
+    "<strong><span style='font-size: 15px;'>Rede Nacional de Áreas Protegidas</span></strong>": AreasProtegidas,
+    "<img src='Imagens/color_areasprotegidas.jpeg' style='width: 16px; height: 16px;'> <span style='font-size: 14px;'>Rede Nacional de Áreas Protegidas": AreasProtegidas,
+};
+
+
+// Etapa 3: Criar o controle de camadas
+var layerControlAdministrativo = L.control.layers(null, overlayMapsAdministrativo, { collapsed: true, position: 'topright' })
+.addTo(map);
+
+
+</script>
+
+
+</body>
+
+
+</html>

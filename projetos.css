@@ -1,0 +1,189 @@
+.Nombre{
+    float: left; 
+    color: #1d1c1c;
+    font-size: 15px;
+    margin-left: 40px;
+    margin-top: 5px;
+  }
+  
+  nav.menu_horizontal ul {
+    list-style-type: none;
+    float: right; 
+    margin-right: 100px;
+    margin-top: 30px;
+
+  }
+  
+  nav.menu_horizontal li {
+    display: inline;
+  }
+  
+  nav.menu_horizontal li a {
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 4px;
+    color: #1d1c1c;
+    font-size: 19px;
+    font-style: bolder;
+    margin-right: 30px;
+  }
+  
+  nav.menu_horizontal li a:hover {
+    color: rgb(147, 117, 62);
+    text-shadow: black;
+  }
+
+  .Projetos {
+    font-size: 23px;
+    color: #2d2b2b;
+    padding-left: 40px;
+    clear: both; 
+    float: left; 
+    margin-top: 40px; 
+    margin-bottom: 0px;
+  }
+
+  .Imagen_projeto_python{
+    float: right;
+    margin-right: 130px;
+    margin-top: 70px;
+  }
+
+  .container_1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .descricao_container1 {
+    margin-top: 150px;
+  }
+
+  .Projeto1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    float: left;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: lighter;
+    color: #2d2b2b;
+    padding-left: 40px;
+    line-height: 0.5; 
+  }
+
+  .Imagen_projeto_analiseespacial{
+    float: right;
+    margin-right: 130px;
+    margin-top: 120px;
+  }
+
+  .container_2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .descricao_container2 {
+    margin-top: 370px;
+  }
+
+  .Projeto2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    float: left;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: lighter;
+    color: #2d2b2b;
+    padding-left: 40px;
+    line-height: 0.5; 
+  }
+
+
+  .Imagen_projeto_detecao{
+    float: right;
+    margin-right: 130px;
+    margin-top: 120px;
+    clear: both;
+  }
+
+  .container_3 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .descricao_container3 {
+    margin-top: 370px;
+  }
+
+  .Projeto3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    float: left;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: lighter;
+    color: #2d2b2b;
+    padding-left: 40px;
+    line-height: 0.5; 
+  }
+
+
+  .Imagen_projeto_atlas{
+    float: right;
+    margin-right: 130px;
+    margin-top: 120px;
+    clear: both;
+  }
+
+  .container_4 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .descricao_container4 {
+    margin-top: 370px;
+  }
+
+  .Projeto4 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    float: left;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: lighter;
+    color: #2d2b2b;
+    padding-left: 40px;
+    line-height: 0.5; 
+  }
+
+
+
+  .Imagen_storymap{
+    float: right;
+    margin-right: 130px;
+    margin-top: 120px;
+    clear: both;
+  }
+
+  .container_5 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .descricao_container5 {
+    margin-top: 370px;
+  }
+
+  .Projeto5 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    float: left;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: lighter;
+    color: #2d2b2b;
+    padding-left: 40px;
+    line-height: 0.5; 
+    margin-bottom: 150px;
+  }
+
+

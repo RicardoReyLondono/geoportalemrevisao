@@ -1,0 +1,64 @@
+#map_coberturas_seagrass {
+    position: relative; /* Permite posicionamento em relação ao elemento pai ou ao viewport */
+    width: 85%; /* Define a largura do mapa */
+    height: 80vh; /* Define a altura do mapa em relação à viewport */
+    margin: 0; /* Remove margens desnecessárias */
+    margin-left: 110px;
+    margin-top: 3px;
+    margin-bottom: 30px;
+    
+}
+
+/* Contenedor principal del título */
+.mapa_titulo_container {
+    text-align: center; /* Centrar el contenido */
+    background-color: rgb(243, 248, 226);
+    margin-left: 108px;
+    margin-right: 115px;
+    clear: both;
+}
+
+/* Estilo del título */
+.titulomapa {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px; /* Espacio debajo del título */
+    margin-top: 30px;
+}
+
+/* Contenedor de las leyendas */
+.legenda_container {
+    display: flex;
+    justify-content: center; /* Centrar las leyendas horizontalmente */
+    align-items: center; /* Alinear al mismo nivel vertical */
+    gap: 20px; /* Espacio entre los elementos de la leyenda */
+}
+
+/* Estilo individual de cada elemento de leyenda */
+.legenda_item {
+    display: flex;
+    align-items: center; /* Alinear texto e imagen al mismo nivel */
+    gap: 5px; /* Espacio entre la imagen y el texto */
+    font-size: 14px; /* Tamaño del texto */
+}
+
+.cabo-verde-label{
+    font-size: 16px;      /* Tamaño de la letra */
+    color: #f9f959;         /* Color de la letra */
+    text-align: center;   /* Centrar el texto */
+    white-space: nowrap;
+    text-shadow: 0px 0px 1px white; /* Sombra para mejor visibilidad */
+    }
+
+.custom-label-ilheus-caboverde {
+    color: #fcfcae; /* Color del texto */
+    padding: 2px 5px; /* Espaciado interno */
+    font-size: 12px; /* Tamaño de la fuente */
+    border-radius: 3px; /* Bordes redondeados */
+    white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+    }
+
+
+    

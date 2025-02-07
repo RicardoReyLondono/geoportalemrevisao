@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilo da barra superior */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(236, 235, 235, 0.8); /* 70% de opacidade */
+    padding:  15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Estilo do contêiner */
+  .Container_Nome_Site {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o logo e o título */
+    font-size: 13px;
+  }
+
+  .Imagen_verde{
+    margin-left: 870px;
+  }
+  
+  .Imagen_GeoPortal {
+    margin-top: 140px;
+    margin-left: 270px;
+  }
+  
+  .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .descricao_container {
+    margin-top: 150px;
+  }
+  
+  .Titulo_Index {
+    margin-left: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif, 'Times New Roman', Times;
+    font-size: 40px;
+    font-style: normal;  
+    margin-top: 10px;
+  }
+  
+  .Descricao_Index{
+    margin-left: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif, 'Times New Roman', Times;
+    font-size: 20px; 
+    text-align: justify;
+    width: 60%;
+    line-height: 1.6;
+    color: #333333;
+    margin-top: -120px;
+  }
+
+  .Descricao_Index a{
+    text-decoration: none;
+  }
+  
+  .Titulo_Explora {
+    position: absolute;
+    top: 110%;  
+    left: 50%;  
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif, 'Times New Roman', Times;
+    font-size: 35px;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;  /* organiza os elementos verticalmente */
+    align-items: center;
+  }
+  
+  .imagen-container {
+    display: flex;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    gap: 25px; /* Espaciado entre imágenes */
+    margin-top: 40px; 
+    margin-bottom: 100px;
+}
+
+.imagen-container a {
+    display: flex;
+    flex-direction: column; /* Hace que los elementos se apilen verticalmente */
+    align-items: center; /* Centra la imagen y el texto */
+    text-align: center;
+    text-decoration: none;
+}
+
+.image-caption {
+    font-size: 16px; 
+    font-weight: bold;
+    line-height: 1.1; 
+    margin-top: 15px; 
+}
+
+
+
+#Explorar:hover {
+    transform: scale(1.20); /* Aumenta el tamaño un 5% */
+    transition: transform 0.3s ease;
+    cursor: pointer; /* Cambia el cursor a un puntero */
+}
+
